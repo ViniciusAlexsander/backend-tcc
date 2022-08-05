@@ -16,7 +16,7 @@ class CriacaoUsuarioUseCase {
       email
     );
 
-    if (usuarioExiste) {
+    if (usuarioExiste.id) {
       throw new AppError("Usuário ja existe");
     }
 
