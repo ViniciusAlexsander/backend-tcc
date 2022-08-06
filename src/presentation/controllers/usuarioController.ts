@@ -1,4 +1,5 @@
 import { Router, Request, Response } from "express";
+import { verificarAutenticacao } from "presentation/middlewares/verificarAutenticacao";
 import { container } from "tsyringe";
 import { CriacaoUsuarioUseCase } from "../../core/useCases/usuarios/CriacaoUsuarioUseCase";
 const usuarioRoutes = Router();
@@ -16,6 +17,14 @@ usuarioRoutes.post(
     });
 
     return res.status(201).send();
+  }
+);
+
+usuarioRoutes.get(
+  "/",
+  verificarAutenticacao,
+  async (req: Request, res: Response): Promise<Response> => {
+    return res.status(201).json("Vai tomar no esquilo");
   }
 );
 

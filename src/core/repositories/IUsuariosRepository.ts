@@ -1,4 +1,4 @@
-import { ICriacaoUsuarioDto } from "core/domain/dtos/ICriacaoUsuarioDto";
+import { ICriacaoUsuarioDto } from "core/domain/dtos/Usuarios/ICriacaoUsuarioDto";
 import { IObterUsuarioPorEmail } from "core/domain/dtos/Usuarios/IObterUsuarioPorEmail";
 
 interface IUsuariosRepository {
