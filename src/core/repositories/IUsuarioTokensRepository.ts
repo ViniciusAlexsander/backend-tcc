@@ -7,4 +7,11 @@ export interface IUsuarioTokensRepository {
     refreshToken,
     usuarioId,
   }: ICriacaoUsuarioTokenDto): Promise<UsuarioTokens>;
+
+  encontrarPorUsuarioIdRefreshToken(
+    usuarioId: string,
+    refreshToken: string
+  ): Promise<UsuarioTokens>;
+
+  excluirPorId(id: string): Promise<void>;
 }
