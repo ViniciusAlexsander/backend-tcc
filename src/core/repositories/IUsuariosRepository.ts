@@ -1,5 +1,5 @@
-import { ICriacaoUsuarioDto } from "core/domain/dtos/Usuarios/ICriacaoUsuarioDto";
-import { IObterUsuarioPorEmail } from "core/domain/dtos/Usuarios/IObterUsuarioPorEmail";
+import { ICriacaoUsuarioDto } from "../domain/dtos/Usuarios/ICriacaoUsuarioDto";
+import { IObterUsuarioPorEmail } from "../domain/dtos/Usuarios/IObterUsuarioPorEmail";
 
 interface IUsuariosRepository {
   criarUsuario(usuario: ICriacaoUsuarioDto): Promise<void>;

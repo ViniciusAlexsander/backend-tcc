@@ -1,7 +1,7 @@
-import { AutenticarUsuarioUseCase } from "core/useCases/autenticacao/AutenticarUsuarioUseCase";
-import { RefreshTokenUseCase } from "core/useCases/autenticacao/RefreshTokenUseCase";
 import { Router, Request, Response } from "express";
 import { container } from "tsyringe";
+import { AutenticarUsuarioUseCase } from "../../core/useCases/autenticacao/AutenticarUsuarioUseCase";
+import { RefreshTokenUseCase } from "../../core/useCases/autenticacao/RefreshTokenUseCase";
 const autenticacaoRoutes = Router();
 
 autenticacaoRoutes.post(

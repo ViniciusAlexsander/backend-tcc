@@ -1,11 +1,11 @@
 import { compare } from "bcrypt";
-import { IUsuariosRepository } from "core/repositories/IUsuariosRepository";
-import { IUsuarioTokensRepository } from "core/repositories/IUsuarioTokensRepository";
-import auth from "core/shared/config/auth";
-import { AppError } from "core/shared/errors/AppError";
 import dayjs from "dayjs";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
+import { IUsuariosRepository } from "../../repositories/IUsuariosRepository";
+import { IUsuarioTokensRepository } from "../../repositories/IUsuarioTokensRepository";
+import auth from "../../shared/config/auth";
+import { AppError } from "../../shared/errors/AppError";
 
 interface IAutenticarUsuarioInput {
   email: string;

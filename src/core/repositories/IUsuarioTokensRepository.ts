@@ -1,5 +1,5 @@
-import { ICriacaoUsuarioTokenDto } from "core/domain/dtos/UsuarioTokens/ICriacaoUsuarioTokenDto";
-import { UsuarioTokens } from "infra/entities/UsuarioTokens";
+import { UsuarioTokens } from "../../infra/entities/UsuarioTokens";
+import { ICriacaoUsuarioTokenDto } from "../domain/dtos/UsuarioTokens/ICriacaoUsuarioTokenDto";
 
 export interface IUsuarioTokensRepository {
   create({

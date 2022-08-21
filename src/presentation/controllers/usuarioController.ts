@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
-import { verificarAutenticacao } from "presentation/middlewares/verificarAutenticacao";
 import { container } from "tsyringe";
 import { CriacaoUsuarioUseCase } from "../../core/useCases/usuarios/CriacaoUsuarioUseCase";
+import { verificarAutenticacao } from "../middlewares/verificarAutenticacao";
 const usuarioRoutes = Router();
 
 usuarioRoutes.post(

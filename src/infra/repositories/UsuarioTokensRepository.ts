@@ -1,7 +1,7 @@
-import { ICriacaoUsuarioTokenDto } from "core/domain/dtos/UsuarioTokens/ICriacaoUsuarioTokenDto";
-import { IUsuarioTokensRepository } from "core/repositories/IUsuarioTokensRepository";
-import { UsuarioTokens } from "infra/entities/UsuarioTokens";
 import { getRepository, Repository } from "typeorm";
+import { ICriacaoUsuarioTokenDto } from "../../core/domain/dtos/UsuarioTokens/ICriacaoUsuarioTokenDto";
+import { IUsuarioTokensRepository } from "../../core/repositories/IUsuarioTokensRepository";
+import { UsuarioTokens } from "../entities/UsuarioTokens";
 
 class UsuarioTokensRepository implements IUsuarioTokensRepository {
   private repository: Repository<UsuarioTokens>;

@@ -1,7 +1,7 @@
-import auth from "core/shared/config/auth";
-import { AppError } from "core/shared/errors/AppError";
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
+import auth from "../../core/shared/config/auth";
+import { AppError } from "../../core/shared/errors/AppError";
 
 interface IPayload {
   sub: string;

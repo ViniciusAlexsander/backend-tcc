@@ -1,8 +1,8 @@
-import { IUsuariosRepository } from "core/repositories/IUsuariosRepository";
-import { IUsuarioTokensRepository } from "core/repositories/IUsuarioTokensRepository";
-import { UsuariosRepository } from "infra/repositories/UsuariosRepository";
-import { UsuarioTokensRepository } from "infra/repositories/UsuarioTokensRepository";
 import { container } from "tsyringe";
+import { UsuariosRepository } from "../../../infra/repositories/UsuariosRepository";
+import { UsuarioTokensRepository } from "../../../infra/repositories/UsuarioTokensRepository";
+import { IUsuariosRepository } from "../../repositories/IUsuariosRepository";
+import { IUsuarioTokensRepository } from "../../repositories/IUsuarioTokensRepository";
 
 container.registerSingleton<IUsuariosRepository>(
   "UsuariosRepository",

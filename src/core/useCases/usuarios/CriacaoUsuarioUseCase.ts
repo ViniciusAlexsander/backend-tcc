@@ -1,8 +1,8 @@
 import { hash } from "bcrypt";
-import { ICriacaoUsuarioInput } from "core/ports/usuarios/ICriacaoUsuarioInput";
-import { IUsuariosRepository } from "core/repositories/IUsuariosRepository";
-import { AppError } from "core/shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
+import { ICriacaoUsuarioInput } from "../../ports/usuarios/ICriacaoUsuarioInput";
+import { IUsuariosRepository } from "../../repositories/IUsuariosRepository";
+import { AppError } from "../../shared/errors/AppError";
 
 @injectable()
 class CriacaoUsuarioUseCase {
