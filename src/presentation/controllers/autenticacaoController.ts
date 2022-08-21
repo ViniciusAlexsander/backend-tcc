@@ -25,14 +25,16 @@ autenticacaoRoutes.post(
 autenticacaoRoutes.post(
   "/refresh-token",
   async (req: Request, res: Response): Promise<Response> => {
-    const token =
-      req.body.token || req.headers["x-access-token"] || req.query.token;
+    const refreshToken =
+      req.body.refreshToken ||
+      req.headers["x-access-token"] ||
+      req.query.refreshToken;
 
     const refreshTokenUseCase = container.resolve(RefreshTokenUseCase);
 
-    const refreshToken = await refreshTokenUseCase.execute(token);
+    const newRefreshToken = await refreshTokenUseCase.execute(refreshToken);
 
-    return res.json(refreshToken);
+    return res.json(newRefreshToken);
   }
 );
 

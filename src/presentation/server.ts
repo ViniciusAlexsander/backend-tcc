@@ -1,4 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
+import cors from "cors";
 import "express-async-errors";
 
 import createConnection from "../infra/typeorm";
@@ -11,6 +12,8 @@ createConnection();
 const app = express();
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use(router);
 
