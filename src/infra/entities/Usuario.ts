@@ -5,14 +5,21 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 class Usuario {
   @PrimaryColumn()
   id: string;
+
   @Column()
   nome: string;
+
   @Column()
   email: string;
+
   @Column()
   senha: string;
+
+  @Column()
+  bio: string;
+
   @CreateDateColumn()
-  created_at: Date;
+  criado_em: Date;
 
   constructor() {
     if (!this.id) {

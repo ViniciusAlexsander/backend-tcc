@@ -10,7 +10,7 @@ export class CriandoUsuarioTokens1659805608886 implements MigrationInterface {
           { name: "refresh_token", type: "varchar" },
           { name: "usuario_id", type: "uuid" },
           { name: "data_expiracao", type: "timestamp" },
-          { name: "created_at", type: "timestamp", default: "now()" },
+          { name: "criado_em", type: "timestamp", default: "now()" },
         ],
         foreignKeys: [
           {

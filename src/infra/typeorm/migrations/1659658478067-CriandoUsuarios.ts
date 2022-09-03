@@ -10,7 +10,8 @@ export class CriandoUsuarios1659658478067 implements MigrationInterface {
           { name: "nome", type: "varchar" },
           { name: "email", type: "varchar", isUnique: true },
           { name: "senha", type: "varchar" },
-          { name: "created_at", type: "timestamp", default: "now()" },
+          { name: "bio", type: "varchar", isNullable: true },
+          { name: "criado_em", type: "timestamp", default: "now()" },
         ],
       })
     );

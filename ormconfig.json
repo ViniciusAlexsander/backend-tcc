@@ -5,10 +5,10 @@
   "username": "tavvciefgjdkbr",
   "password": "2f6ec2bfe8a33e074e2f24566ecc64a38dcfc0f4eea44203f47c16c32fa69daf",
   "database": "d33g76urc4o1dq",
-  "migrations": ["./src/infra/typeorm/migrations/*.ts"],
-  "entities": ["./src/infra/entities/*.ts"],
+  "migrations": ["./**/infra/typeorm/migrations/*.js"],
+  "entities": ["./**/infra/entities/*.js"],
   "cli": {
-    "migrationsDir": "./src/infra/typeorm/migrations"
+    "migrationsDir": "./**/infra/typeorm/migrations"
   },
   "ssl": true,
   "extra": {

@@ -28,7 +28,7 @@ class UsuarioTokens {
   data_expiracao: Date;
 
   @CreateDateColumn()
-  created_at: Date;
+  criado_em: Date;
 
   constructor() {
     if (!this.id) {
