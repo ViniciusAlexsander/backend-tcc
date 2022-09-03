@@ -24,7 +24,7 @@ class GroupRepository implements IGroupRepository {
       title,
     });
 
-    return { ...group };
+    return group;
   }
 }
 

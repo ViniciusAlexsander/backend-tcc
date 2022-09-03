@@ -1,8 +1,9 @@
 import { ICreateGroupInput } from 'core/ports/groups/ICreateGroupInput';
 import { IGroupRepository } from 'core/repositories/IGroupRepository';
 import { AppError } from 'core/shared/errors/AppError';
-import { inject } from 'tsyringe';
+import { inject, injectable } from 'tsyringe';
 
+@injectable()
 class CreateGroupUseCase {
   constructor(
     @inject('GroupRepository')
