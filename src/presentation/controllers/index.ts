@@ -1,14 +1,14 @@
-import { Router } from "express";
-import { autenticacaoRoutes } from "./autenticacaoController";
-import { usuarioRoutes } from "./usuarioController";
+import { Router } from 'express';
+import { authRoutes } from './authenticateController';
+import { userRoutes } from './userController';
 
 const router = Router();
 
-router.use("/usuarios", usuarioRoutes);
-router.use("/autenticao", autenticacaoRoutes);
+router.use('/users', userRoutes);
+router.use('/auth', authRoutes);
 
-router.get("/", (req, res) => {
-  res.json({ message: "Hello World" });
+router.get('/', (req, res) => {
+  res.json({ message: 'Hello World' });
 });
 
 export { router };

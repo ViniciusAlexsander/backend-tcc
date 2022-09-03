@@ -1,9 +1,9 @@
-import dayjs from "dayjs";
-import { sign, verify } from "jsonwebtoken";
-import { inject, injectable } from "tsyringe";
-import { IUsuarioTokensRepository } from "../../repositories/IUsuarioTokensRepository";
-import auth from "../../shared/config/auth";
-import { AppError } from "../../shared/errors/AppError";
+import dayjs from 'dayjs';
+import { sign, verify } from 'jsonwebtoken';
+import { inject, injectable } from 'tsyringe';
+import { ITokensUserRepository } from '../../repositories/ITokensUsersRepository';
+import auth from '../../shared/config/auth';
+import { AppError } from '../../shared/errors/AppError';
 
 interface IPayload {
   sub: string;
@@ -19,8 +19,8 @@ interface IRefreshTokenUseCaseOutput {
 @injectable()
 class RefreshTokenUseCase {
   constructor(
-    @inject("UsuarioTokensRepository")
-    private usuarioTokensRepository: IUsuarioTokensRepository
+    @inject('TokensUsersRepository')
+    private tokensUsersRepository: ITokensUserRepository,
   ) {}
 
   async execute(refreshToken: string): Promise<IRefreshTokenUseCaseOutput> {
@@ -36,33 +36,33 @@ class RefreshTokenUseCase {
     const userId = sub;
 
     const usuarioToken =
-      await this.usuarioTokensRepository.encontrarPorUsuarioIdRefreshToken(
+      await this.tokensUsersRepository.findRefreshTokenByUserId(
         userId,
-        refreshToken
+        refreshToken,
       );
 
     if (!usuarioToken) {
-      throw new AppError("Refresh token não existe");
+      throw new AppError('Refresh token não existe');
     }
 
-    if (dayjs().isAfter(usuarioToken.data_expiracao)) {
-      await this.usuarioTokensRepository.excluirPorId(usuarioToken.id);
+    if (dayjs().isAfter(usuarioToken.expiration_date)) {
+      await this.tokensUsersRepository.removeById(usuarioToken.id);
       throw new AppError(
-        "Refresh token expirou, por favor crie uma nova sessão"
+        'Refresh token expirou, por favor crie uma nova sessão',
       );
     }
 
-    await this.usuarioTokensRepository.excluirPorId(usuarioToken.id);
+    await this.tokensUsersRepository.removeById(usuarioToken.id);
 
     const novoRefreshToken = sign({ email }, secretRefreshToken, {
       subject: userId,
       expiresIn: expiresInRefreshToken,
     });
 
-    await this.usuarioTokensRepository.create({
-      dataExpiracao: dayjs().add(expiresRefreshTokenDays, "days").toDate(),
+    await this.tokensUsersRepository.create({
+      expirationDate: dayjs().add(expiresRefreshTokenDays, 'days').toDate(),
       refreshToken: novoRefreshToken,
-      usuarioId: userId,
+      userId: userId,
     });
 
     const token = sign({}, secretToken, {
@@ -72,7 +72,7 @@ class RefreshTokenUseCase {
 
     return {
       token,
-      expiresInToken: dayjs().add(15, "minute").toDate(),
+      expiresInToken: dayjs().add(15, 'minute').toDate(),
       refreshToken: novoRefreshToken,
     };
   }
