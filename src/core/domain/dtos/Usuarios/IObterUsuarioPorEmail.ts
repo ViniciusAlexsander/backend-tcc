@@ -3,7 +3,7 @@ interface IObterUsuarioPorEmail {
   nome: string;
   email: string;
   senha: string;
-  created_at: Date;
+  criado_em: Date;
 }
 
 export { IObterUsuarioPorEmail };
