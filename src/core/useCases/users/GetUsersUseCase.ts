@@ -12,7 +12,6 @@ class GetUsersUseCase {
 
   async execute(): Promise<IGetUserOutput[]> {
     const users = await this.userRepository.getUsers();
-    console.log(users);
 
     const usersFormated: IGetUserOutput[] = users.map((user) => {
       return {

@@ -1,7 +1,19 @@
 import { v4 as uuidV4 } from 'uuid';
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from './User';
+import { GroupsUsers } from './GroupsUsers';
 
-@Entity('groups')
+@Entity({ name: 'groups' })
 class Group {
   @PrimaryColumn()
   readonly id: string;
@@ -14,6 +26,20 @@ class Group {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @ManyToMany(() => User)
+  @JoinTable({
+    name: 'groups_users',
+    joinColumn: {
+      name: 'group_id',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'user_id',
+      referencedColumnName: 'id',
+    },
+  })
+  users: User[];
 
   constructor() {
     if (!this.id) {

@@ -3,30 +3,23 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
-  ManyToOne,
   PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { User } from './User';
 
-@Entity('tokens_users')
-class TokensUsers {
+@Entity({ name: 'session' })
+class Session {
   @PrimaryColumn()
-  id: string;
+  readonly id: string;
 
   @Column()
-  refresh_token: string;
+  group_id: string;
 
   @Column()
-  user_id: string;
-
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
+  movie_id: string;
 
   @Column()
-  expiration_date: Date;
+  assisted_in_id: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -38,4 +31,4 @@ class TokensUsers {
   }
 }
 
-export { TokensUsers };
+export { Session };

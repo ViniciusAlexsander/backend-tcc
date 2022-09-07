@@ -1,7 +1,17 @@
 import { v4 as uuidV4 } from 'uuid';
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Group } from './Group';
+import { GroupsUsers } from './GroupsUsers';
 
-@Entity('users')
+@Entity({ name: 'users' })
 class User {
   @PrimaryColumn()
   readonly id: string;
@@ -9,7 +19,7 @@ class User {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ unique: true })
   user_name: string;
 
   @Column()
@@ -20,6 +30,20 @@ class User {
 
   @Column()
   description?: string;
+
+  @ManyToMany(() => Group)
+  @JoinTable({
+    name: 'groups_users',
+    joinColumn: {
+      name: 'user_id',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'group_id',
+      referencedColumnName: 'id',
+    },
+  })
+  groups: Group[];
 
   @CreateDateColumn()
   created_at: Date;
