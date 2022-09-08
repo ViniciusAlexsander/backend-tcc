@@ -33,6 +33,18 @@ class GroupsUsersRepository implements IGroupsUsersRepository {
     return groupsUsers;
   }
 
+  async findUserInGroup({
+    group_id,
+    user_id,
+  }: IAddUsersToGroupsDto): Promise<GroupsUsers> {
+    const user = await this.repository.findOne({
+      group_id,
+      user_id,
+    });
+
+    return user;
+  }
+
   async addUserToGroup({
     user_id,
     group_id,
@@ -47,16 +59,14 @@ class GroupsUsersRepository implements IGroupsUsersRepository {
     await this.repository.save(groupUser);
   }
 
-  async findUserInGroup({
+  async removeUserFromGroup({
     group_id,
     user_id,
-  }: IAddUsersToGroupsDto): Promise<GroupsUsers> {
-    const user = await this.repository.findOne({
+  }: IAddUsersToGroupsDto): Promise<void> {
+    await this.repository.delete({
       group_id,
       user_id,
     });
-
-    return user;
   }
 }
 

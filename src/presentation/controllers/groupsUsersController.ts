@@ -1,7 +1,9 @@
 import { IAddGroupToUserInput } from 'core/ports/groups_users/IAddUserToGroupInput';
 import { IFindGroupsUsersInput } from 'core/ports/groups_users/IFindGroupsUsersInput';
+import { IRemoveUserFromGroupInput } from 'core/ports/groups_users/IRemoveUserFromGroupInput';
 import { AddUserToGroupUseCase } from 'core/useCases/groups_users/AddUserToGroupUseCase';
 import { FindGroupsUsersUseCase } from 'core/useCases/groups_users/FindGroupsUsersUseCase';
+import { RemoveUserFromGroupUseCase } from 'core/useCases/groups_users/RemoveUserFromGroup';
 import { Router } from 'express';
 import { checkAuthentication } from 'presentation/middlewares/checkAuthentication';
 import { container } from 'tsyringe';
@@ -33,6 +35,17 @@ groupsUsersRoutes.post('/', checkAuthentication, async (req, res) => {
   });
 
   return res.status(201).json(userAdded);
+});
+
+groupsUsersRoutes.delete('/', checkAuthentication, async (req, res) => {
+  const removeUserFromGroup = container.resolve(RemoveUserFromGroupUseCase);
+  const data: IRemoveUserFromGroupInput = {
+    groupId: req.query.groupId as string,
+    userId: req.query.userId as string,
+    userIdLogged: req.usuario.id,
+  };
+
+  await removeUserFromGroup.execute(data);
 });
 
 export { groupsUsersRoutes };

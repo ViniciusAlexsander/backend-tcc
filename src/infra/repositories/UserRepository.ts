@@ -1,6 +1,5 @@
 import { ICreateUserDto } from 'core/domain/dtos/user/ICreateUserDto';
-import { IGetUserByEmailDto } from 'core/domain/dtos/user/IGetUserByEmailDto';
-import { IGetUsersDto } from 'core/domain/dtos/user/IGetUsersDto';
+import { IFindUsersDto } from 'core/domain/dtos/user/IFindUsersDto';
 import { User } from 'infra/entities/User';
 import { getRepository, Repository } from 'typeorm';
 import { IUserRepository } from '../../core/repositories/IUserRepository';
@@ -10,6 +9,24 @@ class UserRepository implements IUserRepository {
 
   constructor() {
     this.repository = getRepository(User);
+  }
+
+  async index({ id, user_name, email }: IFindUsersDto): Promise<User[]> {
+    const users = await this.repository.find({
+      where: {
+        ...(id && { id }),
+        ...(user_name && { user_name }),
+        ...(email && { email }),
+      },
+    });
+
+    return users;
+  }
+
+  async findOne(id: string): Promise<User> {
+    const user = await this.repository.findOne(id);
+
+    return user;
   }
 
   async createUser({
@@ -26,20 +43,6 @@ class UserRepository implements IUserRepository {
     });
 
     await this.repository.save(usuario);
-  }
-
-  async getUsers(): Promise<IGetUsersDto[]> {
-    const users = await this.repository.find();
-
-    return users;
-  }
-
-  async getUserByEmail(email: string): Promise<IGetUserByEmailDto> {
-    const user = await this.repository.findOne({
-      email,
-    });
-
-    return { ...user };
   }
 }
 

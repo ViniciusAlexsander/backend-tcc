@@ -30,7 +30,7 @@ class AuthenticateUserUseCase {
     email,
     password,
   }: IAuthenticateUserInput): Promise<IAuthenticateUserOutput> {
-    const usuario = await this.userRepository.getUserByEmail(email);
+    const usuario = (await this.userRepository.index({ email }))[0];
 
     const {
       expiresInToken,
