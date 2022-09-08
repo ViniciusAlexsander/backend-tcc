@@ -23,7 +23,7 @@ groupRoutes.post('/', checkAuthentication, async (req, res) => {
 
 groupRoutes.get('/', async (req, res) => {
   const groupRepository = container.resolve(GroupRepository);
-  const { id, title }: IFindGroupInput = req.body;
+  const { id, title }: IFindGroupInput = req.query;
 
   const group = await groupRepository.index({ id, title });
 
