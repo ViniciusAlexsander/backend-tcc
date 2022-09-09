@@ -1,6 +1,6 @@
 export interface IFindGroupsDto {
-  id: string;
-  title: string;
+  id?: string;
+  title?: string;
   description?: string;
   users?: Users[];
 }

@@ -3,11 +3,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryColumn,
-  PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Group } from './Group';
 
-@Entity({ name: 'session' })
+@Entity({ name: 'sessions' })
 class Session {
   @PrimaryColumn()
   readonly id: string;
@@ -19,10 +21,14 @@ class Session {
   movie_id: string;
 
   @Column()
-  assisted_in_id: string;
+  assisted_in_id?: string;
 
   @CreateDateColumn()
   created_at: Date;
+
+  @OneToOne(() => Group)
+  @JoinColumn({ name: 'group_id' })
+  group: Group;
 
   constructor() {
     if (!this.id) {
