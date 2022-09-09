@@ -2,7 +2,7 @@ import { ICreateGroupDto } from 'core/domain/dtos/groups/ICreateGroupDto';
 import { IFindGroupsDto } from 'core/domain/dtos/groups/IFindGroupsDto';
 import { IGroupRepository } from 'core/repositories/IGroupRepository';
 import { Group } from 'infra/entities/Group';
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, Raw, Repository } from 'typeorm';
 
 class GroupRepository implements IGroupRepository {
   private repository: Repository<Group>;
@@ -15,7 +15,9 @@ class GroupRepository implements IGroupRepository {
     return await this.repository.find({
       where: {
         ...(id && { id }),
-        ...(title && { title }),
+        ...(title && {
+          title: Raw((alias) => `LOWER(${alias}) Like LOWER('%${title}%')`),
+        }),
       },
       relations: ['users', 'groupsUsers'],
     });
