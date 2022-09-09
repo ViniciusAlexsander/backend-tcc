@@ -8,5 +8,6 @@ export interface IFindGroupOutput {
 interface Users {
   id: string;
   name: string;
+  isAdmin: boolean;
   joinedAt: Date;
 }

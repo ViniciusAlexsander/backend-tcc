@@ -43,22 +43,33 @@ class FindGroupsUseCase {
         id: group.id,
         title: group.title,
         description: group.description,
-        users: group.users.map((relation: User) => {
+        users: group.users.map((user: User) => {
+          const { joinedAt, isAdmin } = this.getUserInGroupData(
+            user.id,
+            group.groupsUsers,
+          );
           // format users in group
           return {
-            id: relation.id,
-            name: relation.name,
-            joinedAt: this.getUserJoinedDate(relation.id, group.groupsUsers),
+            id: user.id,
+            name: user.name,
+            isAdmin,
+            joinedAt,
           };
         }),
       };
     });
   }
 
-  getUserJoinedDate(userId: string, groupsUsers: GroupsUsers[]): Date {
+  getUserInGroupData(
+    userId: string,
+    groupsUsers: GroupsUsers[],
+  ): { joinedAt: Date; isAdmin: boolean } {
     // get user joined date in group
-    return groupsUsers.find((groupUser) => groupUser.user_id === userId)
-      .created_at;
+    const user = groupsUsers.find((groupUser) => groupUser.user_id === userId);
+    return {
+      joinedAt: user.created_at,
+      isAdmin: user.is_admin,
+    };
   }
 }
 
