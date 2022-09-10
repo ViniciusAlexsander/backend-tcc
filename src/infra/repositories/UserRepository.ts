@@ -1,6 +1,6 @@
-import { ICreateUserDto } from 'core/domain/dtos/user/ICreateUserDto';
-import { IFindUsersDto } from 'core/domain/dtos/user/IFindUsersDto';
-import { User } from 'infra/entities/User';
+import { ICreateUserDto } from '../../core/domain/dtos/user/ICreateUserDto';
+import { IFindUsersDto } from '../../core/domain/dtos/user/IFindUsersDto';
+import { User } from '../entities/User';
 import { getRepository, Repository } from 'typeorm';
 import { IUserRepository } from '../../core/repositories/IUserRepository';
 

@@ -1,7 +1,7 @@
-import { ICreateGroupDto } from 'core/domain/dtos/groups/ICreateGroupDto';
-import { IFindGroupsDto } from 'core/domain/dtos/groups/IFindGroupsDto';
-import { IGroupRepository } from 'core/repositories/IGroupRepository';
-import { Group } from 'infra/entities/Group';
+import { ICreateGroupDto } from '../../core/domain/dtos/groups/ICreateGroupDto';
+import { IFindGroupsDto } from '../../core/domain/dtos/groups/IFindGroupsDto';
+import { IGroupRepository } from '../../core/repositories/IGroupRepository';
+import { Group } from '../entities/Group';
 import { getRepository, Raw, Repository } from 'typeorm';
 
 class GroupRepository implements IGroupRepository {

@@ -1,6 +1,6 @@
-import { ICreateUserInput } from 'core/ports/users/ICreateUserInput';
-import { IFindUsersInput } from 'core/ports/users/IFindUsersInput';
-import { FindUsersUseCase } from 'core/useCases/users/FindUsersUseCase';
+import { ICreateUserInput } from '../../core/ports/users/ICreateUserInput';
+import { IFindUsersInput } from '../../core/ports/users/IFindUsersInput';
+import { FindUsersUseCase } from '../../core/useCases/users/FindUsersUseCase';
 import { Router, Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { CreateUserUseCase } from '../../core/useCases/users/CreateUserUseCase';

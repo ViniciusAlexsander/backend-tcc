@@ -1,7 +1,7 @@
-import { ICreateGroupInput } from 'core/ports/groups/ICreateGroupInput';
-import { IGroupRepository } from 'core/repositories/IGroupRepository';
-import { IGroupsUsersRepository } from 'core/repositories/IGroupsUsersRepository';
-import { AppError } from 'core/shared/errors/AppError';
+import { ICreateGroupInput } from '../../ports/groups/ICreateGroupInput';
+import { IGroupRepository } from '../../repositories/IGroupRepository';
+import { IGroupsUsersRepository } from '../../repositories/IGroupsUsersRepository';
+import { AppError } from '../../../core/shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 
 @injectable()

@@ -1,7 +1,7 @@
 import { IRemoveUserFromGroupInput } from 'core/ports/groups_users/IRemoveUserFromGroupInput';
 import { IGroupRepository } from 'core/repositories/IGroupRepository';
-import { IGroupsUsersRepository } from 'core/repositories/IGroupsUsersRepository';
-import { AppError } from 'core/shared/errors/AppError';
+import { IGroupsUsersRepository } from '../../../core/repositories/IGroupsUsersRepository';
+import { AppError } from '../../../core/shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 
 @injectable()

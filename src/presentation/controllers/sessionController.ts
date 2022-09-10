@@ -1,8 +1,8 @@
-import { ICreateSessionInput } from 'core/ports/sessions/ICreateSessionInput';
-import { IFindSessionsInput } from 'core/ports/sessions/IFindSessionsInput';
-import { CreateSessionUseCase } from 'core/useCases/sessions/CreateSessionUseCase';
-import { FindSessionByIdUseCase } from 'core/useCases/sessions/FindByIdSessionUseCase';
-import { FindSessionsUseCase } from 'core/useCases/sessions/FindSessionsUseCase';
+import { ICreateSessionInput } from '../../core/ports/sessions/ICreateSessionInput';
+import { IFindSessionsInput } from '../../core/ports/sessions/IFindSessionsInput';
+import { CreateSessionUseCase } from '../../core/useCases/sessions/CreateSessionUseCase';
+import { FindSessionByIdUseCase } from '../../core/useCases/sessions/FindByIdSessionUseCase';
+import { FindSessionsUseCase } from '../../core/useCases/sessions/FindSessionsUseCase';
 import { Router } from 'express';
 import { container } from 'tsyringe';
 

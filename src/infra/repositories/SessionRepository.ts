@@ -1,6 +1,6 @@
-import { ICreateSessionDto } from 'core/domain/dtos/sessions/ICreateSessionDto';
-import { ISessionRepository } from 'core/repositories/ISessionRepository';
-import { Session } from 'infra/entities/Session';
+import { ICreateSessionDto } from '../../core/domain/dtos/sessions/ICreateSessionDto';
+import { ISessionRepository } from '../../core/repositories/ISessionRepository';
+import { Session } from '../entities/Session';
 import { getRepository, Repository } from 'typeorm';
 
 export class SessionRepository implements ISessionRepository {

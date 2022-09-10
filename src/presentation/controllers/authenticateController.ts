@@ -1,5 +1,5 @@
-import { IAuthenticateUserInput } from 'core/ports/auth/IAuthenticateUserInput';
-import { AuthenticateUserUseCase } from 'core/useCases/auth/AutenticarUsuarioUseCase';
+import { IAuthenticateUserInput } from '../../core/ports/auth/IAuthenticateUserInput';
+import { AuthenticateUserUseCase } from '../../core/useCases/auth/AutenticarUsuarioUseCase';
 import { Router, Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { RefreshTokenUseCase } from '../../core/useCases/auth/RefreshTokenUseCase';

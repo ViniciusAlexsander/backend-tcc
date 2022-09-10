@@ -1,9 +1,9 @@
-import { ICreateGroupInput } from 'core/ports/groups/ICreateGroupInput';
-import { IFindGroupInput } from 'core/ports/groups/IFindGroupInput';
-import { CreateGroupUseCase } from 'core/useCases/groups/CreateGroupUseCase';
-import { FindGroupsUseCase } from 'core/useCases/groups/FindGroupsUseCase';
+import { ICreateGroupInput } from '../../core/ports/groups/ICreateGroupInput';
+import { IFindGroupInput } from '../../core/ports/groups/IFindGroupInput';
+import { CreateGroupUseCase } from '../../core/useCases/groups/CreateGroupUseCase';
+import { FindGroupsUseCase } from '../../core/useCases/groups/FindGroupsUseCase';
 import { Router } from 'express';
-import { checkAuthentication } from 'presentation/middlewares/checkAuthentication';
+import { checkAuthentication } from '../middlewares/checkAuthentication';
 import { container } from 'tsyringe';
 
 const groupRoutes = Router();

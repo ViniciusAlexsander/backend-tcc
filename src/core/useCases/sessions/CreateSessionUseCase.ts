@@ -1,6 +1,6 @@
-import { ICreateSessionInput } from 'core/ports/sessions/ICreateSessionInput';
-import { IGroupRepository } from 'core/repositories/IGroupRepository';
-import { ISessionRepository } from 'core/repositories/ISessionRepository';
+import { ICreateSessionInput } from '../../../core/ports/sessions/ICreateSessionInput';
+import { IGroupRepository } from '../../../core/repositories/IGroupRepository';
+import { ISessionRepository } from '../../../core/repositories/ISessionRepository';
 import { inject, injectable } from 'tsyringe';
 
 @injectable()

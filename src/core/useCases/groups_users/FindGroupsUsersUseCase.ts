@@ -1,6 +1,5 @@
-import { IGetGroupsUsersDto } from 'core/domain/dtos/groups_users/IGetGroupsUsersDto';
-import { IFindGroupsUsersInput } from 'core/ports/groups_users/IFindGroupsUsersInput';
-import { IFindGroupsUsersOutput } from 'core/ports/groups_users/IFindGroupsUsersOutput';
+import { IFindGroupsUsersInput } from '../../ports/groups_users/IFindGroupsUsersInput';
+import { IFindGroupsUsersOutput } from '../../ports/groups_users/IFindGroupsUsersOutput';
 import { IGroupsUsersRepository } from 'core/repositories/IGroupsUsersRepository';
 import { inject, injectable } from 'tsyringe';
 

@@ -1,5 +1,5 @@
-import { ICreateTokenUserDto } from 'core/domain/dtos/tokensUsers/ICreateTokenUserDto';
-import { TokensUsers } from 'infra/entities/TokensUsers';
+import { ICreateTokenUserDto } from '../../core/domain/dtos/tokensUsers/ICreateTokenUserDto';
+import { TokensUsers } from '../entities/TokensUsers';
 import { getRepository, Repository } from 'typeorm';
 import { ITokensUserRepository } from '../../core/repositories/ITokensUsersRepository';
 

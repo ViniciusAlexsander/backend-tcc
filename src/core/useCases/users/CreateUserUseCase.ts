@@ -1,8 +1,8 @@
 import { hash } from 'bcrypt';
-import { ICreateUserInput } from 'core/ports/users/ICreateUserInput';
-import { IUserRepository } from 'core/repositories/IUserRepository';
+import { ICreateUserInput } from '../../../core/ports/users/ICreateUserInput';
+import { IUserRepository } from '../../../core/repositories/IUserRepository';
 import { inject, injectable } from 'tsyringe';
-import { AppError } from '../../shared/errors/AppError';
+import { AppError } from '../../../core/shared/errors/AppError';
 
 @injectable()
 class CreateUserUseCase {

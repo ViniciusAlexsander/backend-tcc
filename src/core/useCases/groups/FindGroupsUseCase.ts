@@ -1,10 +1,9 @@
-import { ICreateGroupInput } from 'core/ports/groups/ICreateGroupInput';
-import { IFindGroupInput } from 'core/ports/groups/IFindGroupInput';
-import { IFindGroupOutput } from 'core/ports/groups/IFindGroupOutput';
-import { IGroupRepository } from 'core/repositories/IGroupRepository';
-import { Group } from 'infra/entities/Group';
-import { GroupsUsers } from 'infra/entities/GroupsUsers';
-import { User } from 'infra/entities/User';
+import { IFindGroupInput } from '../../ports/groups/IFindGroupInput';
+import { IFindGroupOutput } from '../../ports/groups/IFindGroupOutput';
+import { IGroupRepository } from '../../repositories/IGroupRepository';
+import { Group } from '../../../infra/entities/Group';
+import { GroupsUsers } from '../../../infra/entities/GroupsUsers';
+import { User } from '../../../infra/entities/User';
 import { inject, injectable } from 'tsyringe';
 
 @injectable()

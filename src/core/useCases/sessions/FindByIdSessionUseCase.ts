@@ -1,5 +1,5 @@
-import { IFindSessionByIdOutput } from 'core/ports/sessions/IFindSessionByIdOutput';
-import { ISessionRepository } from 'core/repositories/ISessionRepository';
+import { IFindSessionByIdOutput } from '../../../core/ports/sessions/IFindSessionByIdOutput';
+import { ISessionRepository } from '../../../core/repositories/ISessionRepository';
 import { inject, injectable } from 'tsyringe';
 
 @injectable()
