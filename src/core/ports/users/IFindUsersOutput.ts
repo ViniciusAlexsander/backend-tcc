@@ -1,4 +1,4 @@
-export interface IGetUserOutput {
+export interface IFindUsersOutput {
   id: string;
   name: string;
   userName: string;

@@ -1,9 +1,9 @@
 import { ICreateUserInput } from 'core/ports/users/ICreateUserInput';
-import { GetUsersUseCase } from 'core/useCases/users/GetUsersUseCase';
+import { IFindUsersInput } from 'core/ports/users/IFindUsersInput';
+import { FindUsersUseCase } from 'core/useCases/users/FindUsersUseCase';
 import { Router, Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { CreateUserUseCase } from '../../core/useCases/users/CreateUserUseCase';
-import { checkAuthentication } from '../middlewares/checkAuthentication';
 const userRoutes = Router();
 
 userRoutes.post('/', async (req: Request, res: Response): Promise<Response> => {
@@ -20,15 +20,17 @@ userRoutes.post('/', async (req: Request, res: Response): Promise<Response> => {
   return res.status(201).send();
 });
 
-userRoutes.get(
-  '/',
-  checkAuthentication,
-  async (req: Request, res: Response): Promise<Response> => {
-    const getUsersUseCase = container.resolve(GetUsersUseCase);
-    const users = await getUsersUseCase.execute();
+userRoutes.get('/', async (req: Request, res: Response): Promise<Response> => {
+  const findUserUseCase = container.resolve(FindUsersUseCase);
+  const data: IFindUsersInput = {
+    id: req.query.id as string,
+    userName: req.body.userName,
+    email: req.body.email,
+  };
 
-    return res.status(201).json(users);
-  },
-);
+  const users = await findUserUseCase.execute(data);
+
+  return res.status(201).json(users);
+});
 
 export { userRoutes };

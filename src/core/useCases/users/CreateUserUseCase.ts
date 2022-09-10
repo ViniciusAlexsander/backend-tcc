@@ -17,10 +17,18 @@ class CreateUserUseCase {
     userName,
     password,
   }: ICreateUserInput): Promise<void> {
-    const existsUser = await this.userRepository.getUserByEmail(email);
+    const emailAlreadyRegistred = await this.userRepository.index({ email });
 
-    if (existsUser.id) {
-      throw new AppError('Usuário ja existe');
+    if (emailAlreadyRegistred.length > 0) {
+      throw new AppError('Email already registred');
+    }
+
+    const userNameAlreadyRegistred = await this.userRepository.index({
+      user_name: userName,
+    });
+
+    if (userNameAlreadyRegistred.length > 0) {
+      throw new AppError('User name already registred');
     }
 
     const passwordHash = await hash(password, 8);

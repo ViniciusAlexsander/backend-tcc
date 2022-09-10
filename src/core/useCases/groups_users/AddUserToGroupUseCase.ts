@@ -55,7 +55,6 @@ class AddUserToGroupUseCase {
       group_id: groupId,
       user_id: userId,
       is_admin: isAdmin,
-      user_id_logged: userIdLogged,
     });
   }
 }

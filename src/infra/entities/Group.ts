@@ -41,6 +41,10 @@ class Group {
   })
   users: User[];
 
+  @OneToMany(() => GroupsUsers, (groupsUsers) => groupsUsers.group)
+  @JoinColumn({ name: 'group_id' })
+  groupsUsers: GroupsUsers[];
+
   constructor() {
     if (!this.id) {
       this.id = uuidV4();
