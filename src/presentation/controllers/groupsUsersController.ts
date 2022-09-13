@@ -7,6 +7,8 @@ import { RemoveUserFromGroupUseCase } from '../../core/useCases/groups_users/Rem
 import { Router } from 'express';
 import { checkAuthentication } from '../middlewares/checkAuthentication';
 import { container } from 'tsyringe';
+import { ICheckUserAdminInput } from 'core/ports/groups_users/ICheckUserAdminInput';
+import { CheckUserAdminUseCase } from 'core/useCases/groups_users/CheckUserAdminUseCase';
 
 const groupsUsersRoutes = Router();
 
@@ -20,6 +22,18 @@ groupsUsersRoutes.get('/', async (req, res) => {
   });
 
   return res.status(200).json(groupsUsers);
+});
+
+groupsUsersRoutes.get('/check-admin', checkAuthentication, async (req, res) => {
+  const data: ICheckUserAdminInput = {
+    groupId: req.query.groupId as string,
+    userIdLogged: req.usuario.id,
+  };
+
+  const checkUserAdminUseCase = container.resolve(CheckUserAdminUseCase);
+  const response = await checkUserAdminUseCase.execute(data);
+
+  return res.status(200).json(response);
 });
 
 groupsUsersRoutes.post('/', checkAuthentication, async (req, res) => {

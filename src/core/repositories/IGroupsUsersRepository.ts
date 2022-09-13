@@ -1,6 +1,5 @@
 import { IAddUsersToGroupsDto } from 'core/domain/dtos/groups_users/IAddUsersToGroupsDto';
 import { IFindUserInGroupDto } from 'core/domain/dtos/groups_users/IFindUserInGroupDto';
-import { IGetGroupsUsersDto } from 'core/domain/dtos/groups_users/IGetGroupsUsersDto';
 import { IRemoveUserFromGroupDto } from 'core/domain/dtos/groups_users/IRemoveUserFromGroupDto';
 import { GroupsUsers } from 'infra/entities/GroupsUsers';
 
@@ -16,7 +15,10 @@ export interface IGroupsUsersRepository {
     user_id,
   }: IAddUsersToGroupsDto): Promise<void>;
 
-  findUserInGroup({ group_id, user_id }: IFindUserInGroupDto): Promise<any>;
+  findUserInGroup({
+    group_id,
+    user_id,
+  }: IFindUserInGroupDto): Promise<GroupsUsers>;
 
   removeUserFromGroup({
     group_id,
