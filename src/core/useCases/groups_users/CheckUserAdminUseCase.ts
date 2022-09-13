@@ -1,9 +1,9 @@
+import { inject, injectable } from 'tsyringe';
 import { ICheckUserAdminInput } from '../../../core/ports/groups_users/ICheckUserAdminInput';
 import { IGroupRepository } from '../../../core/repositories/IGroupRepository';
 import { IGroupsUsersRepository } from '../../../core/repositories/IGroupsUsersRepository';
 import { AppError } from '../../../core/shared/errors/AppError';
-import { inject, injectable } from 'tsyringe';
-import { ICheckUserAdminOutput } from 'core/ports/groups_users/ICheckUserAdminOutput';
+import { ICheckUserAdminOutput } from '../../../core/ports/groups_users/ICheckUserAdminOutput';
 
 @injectable()
 class CheckUserAdminUseCase {

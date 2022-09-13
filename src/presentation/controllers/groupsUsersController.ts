@@ -1,14 +1,14 @@
+import { Router } from 'express';
+import { container } from 'tsyringe';
 import { IAddGroupToUserInput } from '../../core/ports/groups_users/IAddUserToGroupInput';
 import { IFindGroupsUsersInput } from '../../core/ports/groups_users/IFindGroupsUsersInput';
 import { IRemoveUserFromGroupInput } from '../../core/ports/groups_users/IRemoveUserFromGroupInput';
 import { AddUserToGroupUseCase } from '../../core/useCases/groups_users/AddUserToGroupUseCase';
 import { FindGroupsUsersUseCase } from '../../core/useCases/groups_users/FindGroupsUsersUseCase';
 import { RemoveUserFromGroupUseCase } from '../../core/useCases/groups_users/RemoveUserFromGroup';
-import { Router } from 'express';
 import { checkAuthentication } from '../middlewares/checkAuthentication';
-import { container } from 'tsyringe';
-import { ICheckUserAdminInput } from 'core/ports/groups_users/ICheckUserAdminInput';
-import { CheckUserAdminUseCase } from 'core/useCases/groups_users/CheckUserAdminUseCase';
+import { ICheckUserAdminInput } from '../../core/ports/groups_users/ICheckUserAdminInput';
+import { CheckUserAdminUseCase } from '../../core/useCases/groups_users/CheckUserAdminUseCase';
 
 const groupsUsersRoutes = Router();
 
