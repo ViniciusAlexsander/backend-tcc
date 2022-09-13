@@ -21,8 +21,6 @@ export class SessionRepository implements ISessionRepository {
       assisted_in_id,
     });
 
-    console.log(session);
-
     await this.repository.save(session);
   }
 

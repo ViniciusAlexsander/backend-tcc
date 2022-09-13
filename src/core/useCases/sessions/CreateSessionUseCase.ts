@@ -19,9 +19,17 @@ export class CreateSessionUseCase {
   }: ICreateSessionInput): Promise<void> {
     try {
       const group = await this.groupRepository.index({ id: groupId });
+      const movieAlreadyWatched = this.sessionRepository.index({
+        movie_id: movieId,
+        group_id: groupId,
+      });
 
       if (!group) {
         throw new Error('Group not found');
+      }
+
+      if (movieAlreadyWatched) {
+        throw new Error('Movie already watched');
       }
 
       // TODO: check if movie exists in TMDB
