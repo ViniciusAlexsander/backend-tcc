@@ -1,16 +1,16 @@
 import { Router, Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { IAddMovieToUserListInput } from 'core/ports/users_movies/IAddMovieToUserListInput';
-import { UpdateMovieInUserListUseCase } from 'core/useCases/users_movies/UpdateMovieInUserListUseCase';
-import { IUpdateMovieInUserListInput } from 'core/ports/users_movies/IUpdateMovieInUserListInput';
-import { AddMovieToUserListUseCase } from 'core/useCases/users_movies/AddMovieToUserListUseCase';
-import { FindAllMoviesInUserListUseCase } from 'core/useCases/users_movies/FindAllMoviesInUserListUseCase';
-import { IFindAllMoviesInUserListInput } from 'core/ports/users_movies/IFindAllMovieInUserListInput';
-import { checkAuthentication } from 'presentation/middlewares/checkAuthentication';
-import { IDeletMovieFromUserListInput } from 'core/ports/users_movies/IDeleteMovieFromUserListInput';
-import { DeleteMovieFromUserListUseCase } from 'core/useCases/users_movies/DeleteMovieFromUserListUseCase';
+import { IAddMovieToUserListInput } from '../../core/ports/users_movies/IAddMovieToUserListInput';
+import { UpdateMovieInUserListUseCase } from '../../core/useCases/users_movies/UpdateMovieInUserListUseCase';
+import { IUpdateMovieInUserListInput } from '../../core/ports/users_movies/IUpdateMovieInUserListInput';
+import { AddMovieToUserListUseCase } from '../../core/useCases/users_movies/AddMovieToUserListUseCase';
+import { FindAllMoviesInUserListUseCase } from '../../core/useCases/users_movies/FindAllMoviesInUserListUseCase';
+import { IFindAllMoviesInUserListInput } from '../../core/ports/users_movies/IFindAllMovieInUserListInput';
+import { checkAuthentication } from '../../presentation/middlewares/checkAuthentication';
+import { IDeletMovieFromUserListInput } from '../../core/ports/users_movies/IDeleteMovieFromUserListInput';
+import { DeleteMovieFromUserListUseCase } from '../../core/useCases/users_movies/DeleteMovieFromUserListUseCase';
 
-export const usersMoviesRoutes = Router();
+const usersMoviesRoutes = Router();
 
 usersMoviesRoutes.post(
   '/',
@@ -77,3 +77,5 @@ usersMoviesRoutes.get(
     return res.status(201).json(userMovies);
   },
 );
+
+export { usersMoviesRoutes };

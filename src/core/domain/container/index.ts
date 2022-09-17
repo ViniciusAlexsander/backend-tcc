@@ -1,16 +1,18 @@
+import { container } from 'tsyringe';
+
 import { IGroupRepository } from '../../repositories/IGroupRepository';
 import { IGroupsUsersRepository } from '../../repositories/IGroupsUsersRepository';
 import { ISessionRepository } from '../../repositories/ISessionRepository';
 import { IUserRepository } from '../../repositories/IUserRepository';
+import { IUsersMoviesRepository } from '../../repositories/IUsersMoviesRepository';
+
 import { GroupRepository } from '../../../infra/repositories/GroupRepository';
 import { GroupsUsersRepository } from '../../../infra/repositories/GroupsUsersRepository';
 import { SessionRepository } from '../../../infra/repositories/SessionRepository';
 import { UserRepository } from '../../../infra/repositories/UserRepository';
-import { container } from 'tsyringe';
 import { TokensUsersRepository } from '../../../infra/repositories/TokensUsersRepository';
 import { ITokensUserRepository } from '../../repositories/ITokensUsersRepository';
-import { IUsersMoviesRepository } from 'core/repositories/IUsersMoviesRepository';
-import { UsersMoviesRepository } from 'infra/repositories/UsersMoviesRepository';
+import { UsersMoviesRepository } from '../../../infra/repositories/UsersMoviesRepository';
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 

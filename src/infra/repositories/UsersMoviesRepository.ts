@@ -1,11 +1,11 @@
-import { getRepository, Raw, Repository } from 'typeorm';
-import { IUsersMoviesRepository } from 'core/repositories/IUsersMoviesRepository';
-import { IFindAllUsersMoviesDto } from 'core/domain/dtos/users_movies/IFindAllUsersMoviesDto';
-import { UsersMovies } from 'infra/entities/UsersMovies';
-import { IFindOneUsersMoviesDto } from 'core/domain/dtos/users_movies/IFindOneUsersMoviesDto';
-import { IAddMovieToUserListDto } from 'core/domain/dtos/users_movies/IAddMovieToUserListDto';
-import { IUpdateMovieInUserListDto } from 'core/domain/dtos/users_movies/IUpdateMovieInUserListDto';
-import { IDeleteMovieFromUserListDto } from 'core/domain/dtos/users_movies/IDeleteMovieFromUserListDto';
+import { getRepository, Repository } from 'typeorm';
+import { IUsersMoviesRepository } from '../../core/repositories/IUsersMoviesRepository';
+import { IFindAllUsersMoviesDto } from '../../core/domain/dtos/users_movies/IFindAllUsersMoviesDto';
+import { UsersMovies } from '../../infra/entities/UsersMovies';
+import { IFindOneUsersMoviesDto } from '../../core/domain/dtos/users_movies/IFindOneUsersMoviesDto';
+import { IAddMovieToUserListDto } from '../../core/domain/dtos/users_movies/IAddMovieToUserListDto';
+import { IUpdateMovieInUserListDto } from '../../core/domain/dtos/users_movies/IUpdateMovieInUserListDto';
+import { IDeleteMovieFromUserListDto } from '../../core/domain/dtos/users_movies/IDeleteMovieFromUserListDto';
 
 class UsersMoviesRepository implements IUsersMoviesRepository {
   private repository: Repository<UsersMovies>;
