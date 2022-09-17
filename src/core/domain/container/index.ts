@@ -9,6 +9,8 @@ import { UserRepository } from '../../../infra/repositories/UserRepository';
 import { container } from 'tsyringe';
 import { TokensUsersRepository } from '../../../infra/repositories/TokensUsersRepository';
 import { ITokensUserRepository } from '../../repositories/ITokensUsersRepository';
+import { IUsersMoviesRepository } from 'core/repositories/IUsersMoviesRepository';
+import { UsersMoviesRepository } from 'infra/repositories/UsersMoviesRepository';
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 
@@ -30,4 +32,9 @@ container.registerSingleton<IGroupsUsersRepository>(
 container.registerSingleton<ISessionRepository>(
   'SessionRepository',
   SessionRepository,
+);
+
+container.registerSingleton<IUsersMoviesRepository>(
+  'UsersMoviesRepository',
+  UsersMoviesRepository,
 );

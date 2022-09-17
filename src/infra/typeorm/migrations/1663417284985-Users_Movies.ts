@@ -1,24 +1,25 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class Sessions1662680481974 implements MigrationInterface {
+export class UsersMovies1663417284985 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'sessions',
+        name: 'users_movies',
         columns: [
           { name: 'id', type: 'uuid', isPrimary: true },
-          { name: 'group_id', type: 'uuid' },
+          { name: 'user_id', type: 'uuid' },
           { name: 'movie_id', type: 'varchar' },
-          { name: 'total_rating', type: 'integer' },
-          { name: 'assisted_in_id', type: 'varchar', isNullable: true },
+          { name: 'watched', type: 'boolean', default: false },
+          { name: 'rating', type: 'integer', isNullable: true },
+          { name: 'favorite', type: 'boolean', default: false },
           { name: 'created_at', type: 'timestamp', default: 'now()' },
         ],
         foreignKeys: [
           {
-            name: 'FKGroup',
-            referencedTableName: 'groups',
+            name: 'FKUser',
+            referencedTableName: 'users',
             referencedColumnNames: ['id'],
-            columnNames: ['group_id'],
+            columnNames: ['user_id'],
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },
@@ -28,6 +29,6 @@ export class Sessions1662680481974 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('sessions');
+    await queryRunner.dropTable('users_movies');
   }
 }

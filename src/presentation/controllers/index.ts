@@ -4,6 +4,7 @@ import { groupRoutes } from './groupController';
 import { groupsUsersRoutes } from './groupsUsersController';
 import { sessionRoutes } from './sessionController';
 import { userRoutes } from './userController';
+import { usersMoviesRoutes } from './usersMoviesController';
 
 const router = Router();
 
@@ -12,6 +13,7 @@ router.use('/auth', authRoutes);
 router.use('/groups', groupRoutes);
 router.use('/groups-users', groupsUsersRoutes);
 router.use('/sessions', sessionRoutes);
+router.use('/users-movies', usersMoviesRoutes);
 
 router.get('/', (req, res) => {
   res.json({ message: 'Hello World' });

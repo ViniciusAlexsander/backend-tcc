@@ -3,13 +3,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
+  OneToOne,
   PrimaryColumn,
-  PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Group } from './Group';
-import { GroupsUsers } from './GroupsUsers';
+import { User } from './User';
 
 @Entity({ name: 'users_movies' })
 class UsersMovies {
@@ -17,19 +14,22 @@ class UsersMovies {
   readonly id: string;
 
   @Column()
-  movie_id: string;
+  user_id: string;
 
   @Column()
-  user_id: string;
+  movie_id: string;
 
   @Column()
   rating: number;
 
-  @Column()
+  @Column({ default: false })
   watched: boolean;
 
-  @Column()
+  @Column({ default: false })
   favorite: boolean;
+
+  @OneToOne(() => User)
+  user: User;
 
   @CreateDateColumn()
   created_at: Date;

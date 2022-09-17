@@ -1,13 +1,7 @@
 import { v4 as uuidV4 } from 'uuid';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryColumn,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity({ name: 'users_sessions' })
+@Entity({ name: 'session_users' })
 class SessionUsers {
   @PrimaryColumn()
   readonly id: string;
