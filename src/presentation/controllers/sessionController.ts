@@ -5,23 +5,24 @@ import { FindSessionByIdUseCase } from '../../core/useCases/sessions/FindByIdSes
 import { FindSessionsUseCase } from '../../core/useCases/sessions/FindSessionsUseCase';
 import { Router } from 'express';
 import { container } from 'tsyringe';
+import { checkAuthentication } from 'presentation/middlewares/checkAuthentication';
 
 export const sessionRoutes = Router();
 
-sessionRoutes.post('/', async (req, res) => {
-  const data: ICreateSessionInput = {
-    groupId: req.query.groupId as string,
-    movieId: req.query.movieId as string,
-    assistedInId: req.query.assistedInId as string,
-  };
+sessionRoutes.post('/', checkAuthentication, async (req, res) => {
+  const { groupId, movieId, assistedInId }: ICreateSessionInput = req.body;
 
   const createSessionUseCase = container.resolve(CreateSessionUseCase);
-  const result = await createSessionUseCase.execute(data);
+  const result = await createSessionUseCase.execute({
+    groupId,
+    movieId,
+    assistedInId,
+  });
 
   return res.status(201).json(result);
 });
 
-sessionRoutes.get('/', async (req, res) => {
+sessionRoutes.get('/', checkAuthentication, async (req, res) => {
   const data: IFindSessionsInput = {
     groupId: req.query.groupId as string,
     movieId: req.query.movieId as string,
@@ -33,7 +34,7 @@ sessionRoutes.get('/', async (req, res) => {
   return res.status(200).json(result);
 });
 
-sessionRoutes.get('/:id', async (req, res) => {
+sessionRoutes.get('/:id', checkAuthentication, async (req, res) => {
   const { id } = req.params;
 
   const createSessionUseCase = container.resolve(FindSessionByIdUseCase);
