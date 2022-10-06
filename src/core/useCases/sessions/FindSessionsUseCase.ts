@@ -21,7 +21,6 @@ export class FindSessionsUseCase {
         assisted_in_id: assistedInId,
         movie_id: movieId,
       });
-      console.log(sessions);
 
       return sessions.map((session) => ({
         id: session.id,

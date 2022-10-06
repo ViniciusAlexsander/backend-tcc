@@ -2,6 +2,7 @@ import { ICreateSessionInput } from '../../../core/ports/sessions/ICreateSession
 import { IGroupRepository } from '../../../core/repositories/IGroupRepository';
 import { ISessionRepository } from '../../../core/repositories/ISessionRepository';
 import { inject, injectable } from 'tsyringe';
+import { AppError } from '../../shared/errors/AppError';
 
 @injectable()
 export class CreateSessionUseCase {
@@ -19,17 +20,17 @@ export class CreateSessionUseCase {
   }: ICreateSessionInput): Promise<void> {
     try {
       const group = await this.groupRepository.index({ id: groupId });
-      const movieAlreadyWatched = this.sessionRepository.index({
+      const movieAlreadyWatched = await this.sessionRepository.index({
         movie_id: movieId,
         group_id: groupId,
       });
 
       if (!group) {
-        throw new Error('Group not found');
+        throw new AppError('Group not found');
       }
 
-      if (movieAlreadyWatched) {
-        throw new Error('Movie already watched');
+      if (movieAlreadyWatched.length > 0) {
+        throw new AppError('Movie already watched', 409);
       }
 
       // TODO: check if movie exists in TMDB
@@ -40,7 +41,7 @@ export class CreateSessionUseCase {
         assisted_in_id: assistedInId,
       });
     } catch (error) {
-      return error.message;
+      throw new AppError(error.message);
     }
   }
 }
