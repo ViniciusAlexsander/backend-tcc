@@ -12,7 +12,6 @@ export class Users1662226820256 implements MigrationInterface {
           { name: 'email', type: 'varchar', isUnique: true },
           { name: 'password', type: 'varchar' },
           { name: 'description', type: 'varchar', isNullable: true },
-          // TO-DO add image
           { name: 'created_at', type: 'timestamp', default: 'now()' },
         ],
       }),
