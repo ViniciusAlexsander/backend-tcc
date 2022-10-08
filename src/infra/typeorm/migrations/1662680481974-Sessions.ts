@@ -9,7 +9,7 @@ export class Sessions1662680481974 implements MigrationInterface {
           { name: 'id', type: 'uuid', isPrimary: true },
           { name: 'group_id', type: 'uuid' },
           { name: 'movie_id', type: 'varchar' },
-          { name: 'total_rating', type: 'integer' },
+          { name: 'total_rating', type: 'integer', isNullable: true },
           { name: 'assisted_in_id', type: 'varchar', isNullable: true },
           { name: 'session_day', type: 'timestamp' },
           { name: 'created_at', type: 'timestamp', default: 'now()' },

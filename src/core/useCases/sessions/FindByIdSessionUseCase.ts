@@ -18,7 +18,9 @@ export class FindSessionByIdUseCase {
         movieId: session.movie_id,
         groupId: session.group_id,
         assistedInId: session.assisted_in_id,
+        sessionDay: session.session_day,
         createdAt: session.created_at,
+        group: session.group,
       };
     } catch (error) {
       return error.message;

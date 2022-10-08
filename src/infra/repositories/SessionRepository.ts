@@ -19,10 +19,12 @@ export class SessionRepository implements ISessionRepository {
     group_id,
     movie_id,
     assisted_in_id,
+    session_day,
   }: ICreateSessionDto): Promise<void> {
     const session = this.repository.create({
       group_id,
       movie_id,
+      session_day,
       assisted_in_id,
     });
 

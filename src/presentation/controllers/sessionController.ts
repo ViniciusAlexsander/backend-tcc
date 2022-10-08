@@ -11,13 +11,15 @@ import { JoinSessionUseCase } from 'core/useCases/sessions/JoinSessionUseCase';
 export const sessionRoutes = Router();
 
 sessionRoutes.post('/', checkAuthentication, async (req, res) => {
-  const { groupId, movieId, assistedInId }: ICreateSessionInput = req.body;
+  const { groupId, movieId, assistedInId, sessionDay }: ICreateSessionInput =
+    req.body;
 
   const createSessionUseCase = container.resolve(CreateSessionUseCase);
   const result = await createSessionUseCase.execute({
     groupId,
     movieId,
     assistedInId,
+    sessionDay,
   });
 
   return res.status(201).json(result);
