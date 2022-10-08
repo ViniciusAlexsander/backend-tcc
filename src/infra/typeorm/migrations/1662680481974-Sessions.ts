@@ -11,6 +11,7 @@ export class Sessions1662680481974 implements MigrationInterface {
           { name: 'movie_id', type: 'varchar' },
           { name: 'total_rating', type: 'integer' },
           { name: 'assisted_in_id', type: 'varchar', isNullable: true },
+          { name: 'session_day', type: 'timestamp' },
           { name: 'created_at', type: 'timestamp', default: 'now()' },
         ],
         foreignKeys: [

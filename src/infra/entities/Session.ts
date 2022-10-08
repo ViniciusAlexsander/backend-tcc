@@ -23,6 +23,9 @@ class Session {
   @Column()
   assisted_in_id?: string;
 
+  @Column()
+  session_day: Date;
+
   @CreateDateColumn()
   created_at: Date;
 
