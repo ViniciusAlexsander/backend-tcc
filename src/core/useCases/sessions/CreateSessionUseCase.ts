@@ -36,12 +36,14 @@ export class CreateSessionUseCase {
 
       // TODO: check if movie exists in TMDB
 
-      return await this.sessionRepository.create({
+      const sessionCreate = await this.sessionRepository.create({
         group_id: groupId,
         movie_id: movieId,
         assisted_in_id: assistedInId,
         session_day: sessionDay,
       });
+
+      return;
     } catch (error) {
       throw new AppError(error.message);
     }

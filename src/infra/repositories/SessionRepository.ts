@@ -42,8 +42,10 @@ export class SessionRepository implements ISessionRepository {
         ...(assisted_in_id && { assisted_in_id }),
         ...(movie_id && { movie_id }),
       },
-      relations: ['group'],
+      relations: ['group', 'users', 'sessionUsers'],
     });
+
+    console.log(sessions);
 
     return sessions;
   }
