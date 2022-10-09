@@ -50,7 +50,7 @@ class FindGroupsUseCase {
           // format users in group
           return {
             id: user.id,
-            name: user.name,
+            username: user.user_name,
             isAdmin,
             joinedAt,
           };

@@ -34,6 +34,7 @@ sessionRoutes.get('/', checkAuthentication, async (req, res) => {
 
   const findSessionsUseCase = container.resolve(FindSessionsUseCase);
   const result = await findSessionsUseCase.execute(data);
+  
   return res.status(200).json(result);
 });
 
