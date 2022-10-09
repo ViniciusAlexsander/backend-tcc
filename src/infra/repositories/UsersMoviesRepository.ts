@@ -26,9 +26,9 @@ class UsersMoviesRepository implements IUsersMoviesRepository {
   async update({
     movie_id,
     user_id,
-    watched,
-    favorite,
-    rating,
+    watched = false,
+    favorite = false,
+    rating = null,
   }: IUpdateMovieInUserListDto): Promise<UsersMovies> {
     const userMovie = await this.repository.findOne({
       user_id,

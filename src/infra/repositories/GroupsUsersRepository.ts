@@ -12,8 +12,8 @@ class GroupsUsersRepository implements IGroupsUsersRepository {
   }
 
   async index({
-    group_id,
-    user_id,
+    group_id = null,
+    user_id = null,
   }: IFindGroupsUsersDto): Promise<GroupsUsers[]> {
     const groupsUsers = await this.repository.find({
       where: {

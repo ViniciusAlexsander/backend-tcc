@@ -10,9 +10,9 @@ export interface IUsersMoviesRepository {
   update({
     movie_id,
     user_id,
-    watched = false,
-    favorite = false,
-    rating = null,
+    watched,
+    favorite,
+    rating,
   }: IUpdateMovieInUserListDto): Promise<UsersMovies>;
   delete({ user_id, movie_id }: IDeleteMovieFromUserListDto): Promise<void>;
   findAll({ user_id }: IFindAllUsersMoviesDto): Promise<UsersMovies[]>;
