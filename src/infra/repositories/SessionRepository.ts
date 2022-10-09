@@ -3,7 +3,7 @@ import { ISessionRepository } from '../../core/repositories/ISessionRepository';
 import { Session } from '../entities/Session';
 import { getRepository, Repository } from 'typeorm';
 import { IJoinSessionDto } from 'core/domain/dtos/sessions/IJoinSessionDto';
-import { SessionUsers } from 'infra/entities/SessionUsers';
+import { SessionUsers } from '../../infra/entities/SessionUsers';
 import { IFindUserSessionsDto } from 'core/domain/dtos/sessions/IFindUserSessionsDto';
 
 export class SessionRepository implements ISessionRepository {

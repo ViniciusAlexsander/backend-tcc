@@ -5,8 +5,8 @@ import { FindSessionByIdUseCase } from '../../core/useCases/sessions/FindByIdSes
 import { FindSessionsUseCase } from '../../core/useCases/sessions/FindSessionsUseCase';
 import { Router } from 'express';
 import { container } from 'tsyringe';
-import { checkAuthentication } from 'presentation/middlewares/checkAuthentication';
-import { JoinSessionUseCase } from 'core/useCases/sessions/JoinSessionUseCase';
+import { checkAuthentication } from '../middlewares/checkAuthentication';
+import { JoinSessionUseCase } from '../../core/useCases/sessions/JoinSessionUseCase';
 
 export const sessionRoutes = Router();
 
