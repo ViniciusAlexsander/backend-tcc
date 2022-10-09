@@ -1,5 +1,4 @@
 import express, { NextFunction, Request, Response } from "express";
-import cors from "cors";
 import "express-async-errors";
 
 import createConnection from "../infra/typeorm";
@@ -13,7 +12,21 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested, Content-Type, Accept Authorization"
+  )
+  if (req.method === "OPTIONS") {
+    res.header(
+      "Access-Control-Allow-Methods",
+      "POST, PUT, PATCH, GET, DELETE"
+    )
+    return res.status(200).json({})
+  }
+  next()
+});
 
 app.use(router);
 
