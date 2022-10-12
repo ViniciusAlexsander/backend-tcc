@@ -11,10 +11,10 @@ class UserRepository implements IUserRepository {
     this.repository = getRepository(User);
   }
 
-  async index({     
+  async index({
     id = null,
     user_name = null,
-    email = null
+    email = null,
   }: IFindUsersDto): Promise<User[]> {
     const users = await this.repository.find({
       where: {
