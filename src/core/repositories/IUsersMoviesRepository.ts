@@ -1,4 +1,4 @@
-import { IFindAllUsersMoviesDto } from 'core/domain/dtos/users_movies/IFindAllUsersMoviesDto';
+import { IIndexUsersMoviesDto } from 'core/domain/dtos/users_movies/IIndexUsersMoviesDto';
 import { IFindOneUsersMoviesDto } from 'core/domain/dtos/users_movies/IFindOneUsersMoviesDto';
 import { IAddMovieToUserListDto } from 'core/domain/dtos/users_movies/IAddMovieToUserListDto';
 import { UsersMovies } from 'infra/entities/UsersMovies';
@@ -10,11 +10,11 @@ export interface IUsersMoviesRepository {
   update({
     movie_id,
     user_id,
-    watched = null,
-    favorite = false,
-    rating = null,
+    watched,
+    favorite,
+    rating,
   }: IUpdateMovieInUserListDto): Promise<UsersMovies>;
   delete({ user_id, movie_id }: IDeleteMovieFromUserListDto): Promise<void>;
-  findAll({ user_id }: IFindAllUsersMoviesDto): Promise<UsersMovies[]>;
+  index({ user_id }: IIndexUsersMoviesDto): Promise<UsersMovies[]>;
   findOne({ movie_id, user_id }: IFindOneUsersMoviesDto): Promise<UsersMovies>;
 }

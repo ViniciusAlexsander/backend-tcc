@@ -1,10 +1,10 @@
 import { inject, injectable } from 'tsyringe';
 import { IUsersMoviesRepository } from 'core/repositories/IUsersMoviesRepository';
-import { IFindAllMoviesInUserListInput } from 'core/ports/users_movies/IFindAllMovieInUserListInput';
-import { IFindAllMoviesInUserListOutput } from 'core/ports/users_movies/IFindAllMoviesInUserListOutput';
+import { IIndexMoviesInUserListInput } from 'core/ports/users_movies/IIndexMovieInUserListInput';
+import { IIndexMoviesInUserListOutput } from 'core/ports/users_movies/IIndexMoviesInUserListOutput';
 
 @injectable()
-export class FindAllMoviesInUserListUseCase {
+export class IndexMoviesInUserListUseCase {
   constructor(
     @inject('UsersMoviesRepository')
     private usersMoviesRepository: IUsersMoviesRepository,
@@ -12,9 +12,13 @@ export class FindAllMoviesInUserListUseCase {
 
   async execute({
     userId,
-  }: IFindAllMoviesInUserListInput): Promise<IFindAllMoviesInUserListOutput> {
-    const userMovie = await this.usersMoviesRepository.findAll({
+    watched,
+    favorite,
+  }: IIndexMoviesInUserListInput): Promise<IIndexMoviesInUserListOutput> {
+    const userMovie = await this.usersMoviesRepository.index({
       user_id: userId,
+      watched,
+      favorite,
     });
 
     return {

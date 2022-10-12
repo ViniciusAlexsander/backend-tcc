@@ -4,13 +4,14 @@ import { IAddMovieToUserListInput } from '../../core/ports/users_movies/IAddMovi
 import { UpdateMovieInUserListUseCase } from '../../core/useCases/users_movies/UpdateMovieInUserListUseCase';
 import { IUpdateMovieInUserListInput } from '../../core/ports/users_movies/IUpdateMovieInUserListInput';
 import { AddMovieToUserListUseCase } from '../../core/useCases/users_movies/AddMovieToUserListUseCase';
-import { FindAllMoviesInUserListUseCase } from '../../core/useCases/users_movies/FindAllMoviesInUserListUseCase';
-import { IFindAllMoviesInUserListInput } from '../../core/ports/users_movies/IFindAllMovieInUserListInput';
+import { IndexMoviesInUserListUseCase } from '../../core/useCases/users_movies/IndexMoviesInUserListUseCase';
+import { IIndexMoviesInUserListInput } from '../../core/ports/users_movies/IIndexMovieInUserListInput';
 import { checkAuthentication } from '../../presentation/middlewares/checkAuthentication';
 import { IDeletMovieFromUserListInput } from '../../core/ports/users_movies/IDeleteMovieFromUserListInput';
 import { DeleteMovieFromUserListUseCase } from '../../core/useCases/users_movies/DeleteMovieFromUserListUseCase';
-import { FindOneMoviesInUserListUseCase } from 'core/useCases/users_movies/FindOneMovieInUserListUseCase';
-import { IFindOneMovieInUserListInput } from 'core/ports/users_movies/IFindOneMovieInUserListInput';
+import { FindOneMoviesInUserListUseCase } from '../../core/useCases/users_movies/FindOneMovieInUserListUseCase';
+import { IFindOneMovieInUserListInput } from '../../core/ports/users_movies/IFindOneMovieInUserListInput';
+import { formatStringData } from '../helpers/formatStringData';
 
 const usersMoviesRoutes = Router();
 
@@ -72,12 +73,16 @@ usersMoviesRoutes.get(
   '/',
   checkAuthentication,
   async (req: Request, res: Response): Promise<Response> => {
-    const findUserUseCase = container.resolve(FindAllMoviesInUserListUseCase);
-    const data: IFindAllMoviesInUserListInput = {
+    const indexMovieInUserListUseCase = container.resolve(
+      IndexMoviesInUserListUseCase,
+    );
+    const data: IIndexMoviesInUserListInput = {
       userId: req.usuario.id,
+      watched: formatStringData(req.query.watched as string),
+      favorite: formatStringData(req.query.favorite as string),
     };
 
-    const userMovies = await findUserUseCase.execute(data);
+    const userMovies = await indexMovieInUserListUseCase.execute(data);
 
     return res.status(201).json(userMovies);
   },

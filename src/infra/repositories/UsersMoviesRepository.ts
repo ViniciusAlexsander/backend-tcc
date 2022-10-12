@@ -1,6 +1,6 @@
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, IsNull, Not, Repository } from 'typeorm';
 import { IUsersMoviesRepository } from '../../core/repositories/IUsersMoviesRepository';
-import { IFindAllUsersMoviesDto } from '../../core/domain/dtos/users_movies/IFindAllUsersMoviesDto';
+import { IIndexUsersMoviesDto } from '../../core/domain/dtos/users_movies/IIndexUsersMoviesDto';
 import { UsersMovies } from '../../infra/entities/UsersMovies';
 import { IFindOneUsersMoviesDto } from '../../core/domain/dtos/users_movies/IFindOneUsersMoviesDto';
 import { IAddMovieToUserListDto } from '../../core/domain/dtos/users_movies/IAddMovieToUserListDto';
@@ -31,16 +31,14 @@ class UsersMoviesRepository implements IUsersMoviesRepository {
   async update({
     movie_id,
     user_id,
-    watched = false,
-    favorite = false,
-    rating = null,
+    watched,
+    favorite,
+    rating,
   }: IUpdateMovieInUserListDto): Promise<UsersMovies> {
     const userMovie = await this.repository.findOne({
       user_id,
       movie_id,
     });
-
-    console.log('update', userMovie, movie_id);
     userMovie.watched = watched;
     userMovie.favorite = favorite;
     userMovie.rating = rating;
@@ -58,9 +56,21 @@ class UsersMoviesRepository implements IUsersMoviesRepository {
     });
   }
 
-  async findAll({ user_id }: IFindAllUsersMoviesDto): Promise<UsersMovies[]> {
+  async index({
+    user_id,
+    watched,
+    favorite,
+  }: IIndexUsersMoviesDto): Promise<UsersMovies[]> {
+    const favoriteAndWatchedNullCondition = watched === null && favorite !== null;
+    
     return await this.repository.find({
-      user_id,
+      where: {
+        user_id,
+        ...(!favoriteAndWatchedNullCondition && { watched: Not(IsNull()) }),
+        ...(watched && { watched }),
+        ...(watched === false && { watched }),
+        ...(favorite && { favorite }),
+      },
     });
   }
 

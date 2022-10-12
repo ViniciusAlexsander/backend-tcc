@@ -1,4 +1,4 @@
-export interface IFindAllMoviesInUserListOutput {
+export interface IIndexMoviesInUserListOutput {
   userId: string;
   movies: Movie[];
 }
