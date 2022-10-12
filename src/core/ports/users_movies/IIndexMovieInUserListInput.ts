@@ -1,5 +1,5 @@
 export interface IIndexMoviesInUserListInput {
   userId: string;
-  watched?: boolean;
+  watched?: '0' | '1' | '2';
   favorite?: boolean;
 }

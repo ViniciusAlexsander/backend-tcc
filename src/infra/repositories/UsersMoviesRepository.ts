@@ -35,13 +35,17 @@ class UsersMoviesRepository implements IUsersMoviesRepository {
     favorite,
     rating,
   }: IUpdateMovieInUserListDto): Promise<UsersMovies> {
-    const userMovie = await this.repository.findOne({
+    let userMovie = await this.repository.findOne({
       user_id,
       movie_id,
     });
-    userMovie.watched = watched;
-    userMovie.favorite = favorite;
-    userMovie.rating = rating;
+
+    userMovie = {
+      ...userMovie,
+      ...(watched !== undefined && { watched }),
+      ...(favorite !== undefined && { favorite }),
+      ...(rating !== undefined && { rating }),
+    }
 
     return await this.repository.save(userMovie);
   }
@@ -61,14 +65,15 @@ class UsersMoviesRepository implements IUsersMoviesRepository {
     watched,
     favorite,
   }: IIndexUsersMoviesDto): Promise<UsersMovies[]> {
-    const favoriteAndWatchedNullCondition = watched === null && favorite !== null;
-    
+    const allRelationsCondition = watched === null && favorite !== null;
+    console.log(`watched: ${watched}, favorite: ${favorite}`);
     return await this.repository.find({
       where: {
         user_id,
-        ...(!favoriteAndWatchedNullCondition && { watched: Not(IsNull()) }),
-        ...(watched && { watched }),
-        ...(watched === false && { watched }),
+        // ...(!favoriteAndWatchedNullCondition && { watched: Not(IsNull()) }),
+        ...(watched === '0' && { watched: Not(IsNull())}),
+        ...(watched === '1' && { watched: true }),
+        ...(watched === '2' && { watched: false }),
         ...(favorite && { favorite }),
       },
     });

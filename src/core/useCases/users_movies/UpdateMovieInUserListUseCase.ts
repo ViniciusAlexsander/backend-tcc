@@ -23,17 +23,13 @@ export class UpdateMovieInUserListUseCase {
       user_id: userId,
     });
 
-    console.log(movieInList);
-
     if (!movieInList && (watched != null || favorite || rating)) {
-
       await this.usersMoviesRepository.create({
         movie_id: movieId,
         user_id: userId,
         watched,
       });
     }
-
 
     const movieUpdated = await this.usersMoviesRepository.update({
       movie_id: movieId,
@@ -43,8 +39,17 @@ export class UpdateMovieInUserListUseCase {
       rating,
     });
 
-    console.log('movieUpdated', movieUpdated);
-
+    if (
+      movieUpdated &&
+      movieUpdated.watched == null &&
+      !movieUpdated.favorite &&
+      movieUpdated.rating == null
+    ) {
+      await this.usersMoviesRepository.delete({
+        movie_id: movieId,
+        user_id: userId,
+      });
+    }
 
     return {
       movieId: movieUpdated.movie_id,

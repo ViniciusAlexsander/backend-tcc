@@ -78,7 +78,7 @@ usersMoviesRoutes.get(
     );
     const data: IIndexMoviesInUserListInput = {
       userId: req.usuario.id,
-      watched: formatStringData(req.query.watched as string),
+      watched: req.query.watched as '0' | '1' | '2',
       favorite: formatStringData(req.query.favorite as string),
     };
 
