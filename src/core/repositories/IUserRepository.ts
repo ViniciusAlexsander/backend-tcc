@@ -4,9 +4,9 @@ import { User } from 'infra/entities/User';
 
 interface IUserRepository {
   index({
-    id = null,
-    user_name = null,
-    email = null,
+    id,
+    user_name,
+    email,
   }: IFindUsersDto): Promise<User[]>;
 
   findOne(id: string): Promise<User>;

@@ -2,6 +2,7 @@ import { IFindSessionByIdOutput } from '../../../core/ports/sessions/IFindSessio
 import { IFindSessionsInput } from '../../../core/ports/sessions/IFindSessionsInput';
 import { ISessionRepository } from '../../../core/repositories/ISessionRepository';
 import { inject, injectable } from 'tsyringe';
+import { IFindSessionOutput } from 'core/ports/sessions/IFindSessionOutput';
 
 @injectable()
 export class FindSessionsUseCase {
@@ -14,7 +15,7 @@ export class FindSessionsUseCase {
     groupId,
     assistedInId,
     movieId,
-  }: IFindSessionsInput): Promise<IFindSessionByIdOutput[]> {
+  }: IFindSessionsInput): Promise<IFindSessionOutput[]> {
     try {
       const sessions = await this.sessionRepository.index({
         group_id: groupId,
@@ -27,7 +28,10 @@ export class FindSessionsUseCase {
         movieId: session.movie_id,
         groupId: session.group_id,
         assistedInId: session.assisted_in_id,
+        sessionDay: session.session_day,
         createdAt: session.created_at,
+        group: session.group,
+        users: session.users.map((user) => {return {id: user.id, username: user.user_name}})
       }));
     } catch (error) {
       return error.message;

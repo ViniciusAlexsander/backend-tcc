@@ -5,8 +5,8 @@ import { GroupsUsers } from 'infra/entities/GroupsUsers';
 
 export interface IGroupsUsersRepository {
   index({
-    group_id = null,
-    user_id = null,
+    group_id,
+    user_id,
   }?: IFindUserInGroupDto): Promise<GroupsUsers[]>;
 
   addUserToGroup({

@@ -18,9 +18,11 @@ usersMoviesRoutes.post(
   '/:id',
   checkAuthentication,
   async (req: Request, res: Response): Promise<Response> => {
+    const { movieId } = req.body;
+
     const data: IAddMovieToUserListInput = {
       userId: req.usuario.id,
-      movieId: req.params.id,
+      movieId,
     };
 
     const createUserUseCase = container.resolve(AddMovieToUserListUseCase);
@@ -34,16 +36,19 @@ usersMoviesRoutes.put(
   '/:id',
   checkAuthentication,
   async (req: Request, res: Response): Promise<Response> => {
+    const { movieId, watched, favorite, rating } = req.body;
     const data: IUpdateMovieInUserListInput = {
       userId: req.usuario.id,
-      movieId: req.params.id,
-      watched: req.body.watched,
-      favorite: req.body.favorite,
-      rating: req.body.rating,
+      movieId,
+      watched,
+      favorite,
+      rating,
     };
 
-    const createUserUseCase = container.resolve(UpdateMovieInUserListUseCase);
-    const movieUpdatedInList = await createUserUseCase.execute(data);
+    const updateMovieInUserListUseCase = container.resolve(
+      UpdateMovieInUserListUseCase,
+    );
+    const movieUpdatedInList = await updateMovieInUserListUseCase.execute(data);
 
     return res.status(201).json(movieUpdatedInList);
   },

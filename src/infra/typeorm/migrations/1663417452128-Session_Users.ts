@@ -9,7 +9,7 @@ export class SessionUsers1663417452128 implements MigrationInterface {
           { name: 'id', type: 'uuid', isPrimary: true },
           { name: 'session_id', type: 'uuid' },
           { name: 'user_id', type: 'uuid' },
-          { name: 'rating', type: 'integer' },
+          { name: 'rating', type: 'integer', isNullable: true },
           { name: 'created_at', type: 'timestamp', default: 'now()' },
         ],
         foreignKeys: [

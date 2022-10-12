@@ -1,5 +1,15 @@
 import { v4 as uuidV4 } from 'uuid';
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryColumn,
+} from 'typeorm';
+import { User } from './User';
+import { Group } from './Group';
+import { Session } from './Session';
 
 @Entity({ name: 'session_users' })
 class SessionUsers {
@@ -17,6 +27,14 @@ class SessionUsers {
 
   // @Column()
   // feedback: boolean;
+
+  @OneToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
+
+  @OneToOne(() => Session)
+  @JoinColumn({ name: 'session_id' })
+  session: Session;
 
   @CreateDateColumn()
   created_at: Date;

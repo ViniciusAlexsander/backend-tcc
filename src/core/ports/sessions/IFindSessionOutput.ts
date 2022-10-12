@@ -1,6 +1,6 @@
 import { Group } from 'infra/entities/Group';
 
-export interface IFindSessionByIdOutput {
+export interface IFindSessionOutput {
   id: string;
   groupId: string;
   movieId: string;
@@ -8,4 +8,10 @@ export interface IFindSessionByIdOutput {
   sessionDay: Date;
   createdAt: Date;
   group: Group;
+  users: IUser[]
+}
+
+interface IUser {
+  id: string;
+  username: string;
 }
