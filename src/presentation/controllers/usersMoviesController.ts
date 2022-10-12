@@ -9,32 +9,34 @@ import { IFindAllMoviesInUserListInput } from '../../core/ports/users_movies/IFi
 import { checkAuthentication } from '../../presentation/middlewares/checkAuthentication';
 import { IDeletMovieFromUserListInput } from '../../core/ports/users_movies/IDeleteMovieFromUserListInput';
 import { DeleteMovieFromUserListUseCase } from '../../core/useCases/users_movies/DeleteMovieFromUserListUseCase';
+import { FindOneMoviesInUserListUseCase } from 'core/useCases/users_movies/FindOneMovieInUserListUseCase';
+import { IFindOneMovieInUserListInput } from 'core/ports/users_movies/IFindOneMovieInUserListInput';
 
 const usersMoviesRoutes = Router();
 
 usersMoviesRoutes.post(
-  '/',
+  '/:id',
   checkAuthentication,
   async (req: Request, res: Response): Promise<Response> => {
     const data: IAddMovieToUserListInput = {
       userId: req.usuario.id,
-      movieId: req.query.movieId as string,
+      movieId: req.params.id,
     };
 
     const createUserUseCase = container.resolve(AddMovieToUserListUseCase);
-    await createUserUseCase.execute(data);
+    const response = await createUserUseCase.execute(data);
 
-    return res.status(201).send();
+    return res.status(201).json(response);
   },
 );
 
 usersMoviesRoutes.put(
-  '/',
+  '/:id',
   checkAuthentication,
   async (req: Request, res: Response): Promise<Response> => {
     const data: IUpdateMovieInUserListInput = {
       userId: req.usuario.id,
-      movieId: req.query.movieId as string,
+      movieId: req.params.id,
       watched: req.body.watched,
       favorite: req.body.favorite,
       rating: req.body.rating,
@@ -70,6 +72,22 @@ usersMoviesRoutes.get(
     const findUserUseCase = container.resolve(FindAllMoviesInUserListUseCase);
     const data: IFindAllMoviesInUserListInput = {
       userId: req.usuario.id,
+    };
+
+    const userMovies = await findUserUseCase.execute(data);
+
+    return res.status(201).json(userMovies);
+  },
+);
+
+usersMoviesRoutes.get(
+  '/:id',
+  checkAuthentication,
+  async (req: Request, res: Response): Promise<Response> => {
+    const findUserUseCase = container.resolve(FindOneMoviesInUserListUseCase);
+    const data: IFindOneMovieInUserListInput = {
+      userId: req.usuario.id,
+      movieId: req.params.id,
     };
 
     const userMovies = await findUserUseCase.execute(data);

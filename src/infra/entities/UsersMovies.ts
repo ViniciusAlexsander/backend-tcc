@@ -22,7 +22,7 @@ class UsersMovies {
   @Column()
   rating: number;
 
-  @Column({ default: false })
+  @Column({ default: null })
   watched: boolean;
 
   @Column({ default: false })

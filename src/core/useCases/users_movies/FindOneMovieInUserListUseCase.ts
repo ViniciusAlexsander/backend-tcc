@@ -22,10 +22,10 @@ export class FindOneMoviesInUserListUseCase {
     return {
       userId,
       movie: {
-        movieId: userMovie.movie_id,
-        watched: userMovie.watched,
-        favorite: userMovie.favorite,
-        rating: userMovie.rating,
+        movieId: userMovie ? userMovie.movie_id : movieId,
+        watched: userMovie ? userMovie.watched : null ,
+        favorite: userMovie ? userMovie.favorite : false,
+        rating: userMovie ? userMovie.rating : null,
       },
     };
   }

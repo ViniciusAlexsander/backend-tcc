@@ -9,7 +9,7 @@ export class UsersMovies1663417284985 implements MigrationInterface {
           { name: 'id', type: 'uuid', isPrimary: true },
           { name: 'user_id', type: 'uuid' },
           { name: 'movie_id', type: 'varchar' },
-          { name: 'watched', type: 'boolean', default: false },
+          { name: 'watched', type: 'boolean', default: null, isNullable: true },
           { name: 'rating', type: 'integer', isNullable: true },
           { name: 'favorite', type: 'boolean', default: false },
           { name: 'created_at', type: 'timestamp', default: 'now()' },

@@ -14,13 +14,18 @@ class UsersMoviesRepository implements IUsersMoviesRepository {
     this.repository = getRepository(UsersMovies);
   }
 
-  async create({ movie_id, user_id }: IAddMovieToUserListDto): Promise<void> {
+  async create({
+    movie_id,
+    user_id,
+    watched,
+  }: IAddMovieToUserListDto): Promise<UsersMovies> {
     const userMovie = this.repository.create({
       user_id,
       movie_id,
+      watched,
     });
 
-    await this.repository.save(userMovie);
+    return await this.repository.save(userMovie);
   }
 
   async update({
@@ -35,6 +40,7 @@ class UsersMoviesRepository implements IUsersMoviesRepository {
       movie_id,
     });
 
+    console.log('update', userMovie, movie_id);
     userMovie.watched = watched;
     userMovie.favorite = favorite;
     userMovie.rating = rating;

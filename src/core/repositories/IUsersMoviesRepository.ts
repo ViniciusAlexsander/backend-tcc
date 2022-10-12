@@ -6,11 +6,11 @@ import { IUpdateMovieInUserListDto } from 'core/domain/dtos/users_movies/IUpdate
 import { IDeleteMovieFromUserListDto } from 'core/domain/dtos/users_movies/IDeleteMovieFromUserListDto';
 
 export interface IUsersMoviesRepository {
-  create({ movie_id, user_id }: IAddMovieToUserListDto): Promise<void>;
+  create({ movie_id, user_id, watched }: IAddMovieToUserListDto): Promise<UsersMovies>;
   update({
     movie_id,
     user_id,
-    watched = false,
+    watched = null,
     favorite = false,
     rating = null,
   }: IUpdateMovieInUserListDto): Promise<UsersMovies>;

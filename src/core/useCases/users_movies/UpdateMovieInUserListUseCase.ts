@@ -23,9 +23,17 @@ export class UpdateMovieInUserListUseCase {
       user_id: userId,
     });
 
-    if (!movieInList) {
-      throw new AppError('Movie not found in user list', 404);
+    console.log(movieInList);
+
+    if (!movieInList && (watched != null || favorite || rating)) {
+
+      await this.usersMoviesRepository.create({
+        movie_id: movieId,
+        user_id: userId,
+        watched,
+      });
     }
+
 
     const movieUpdated = await this.usersMoviesRepository.update({
       movie_id: movieId,
@@ -34,6 +42,9 @@ export class UpdateMovieInUserListUseCase {
       favorite,
       rating,
     });
+
+    console.log('movieUpdated', movieUpdated);
+
 
     return {
       movieId: movieUpdated.movie_id,
