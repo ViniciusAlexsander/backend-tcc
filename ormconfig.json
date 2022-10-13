@@ -5,8 +5,8 @@
   "username": "tavvciefgjdkbr",
   "password": "2f6ec2bfe8a33e074e2f24566ecc64a38dcfc0f4eea44203f47c16c32fa69daf",
   "database": "d33g76urc4o1dq",
-  "migrations": ["./**/infra/typeorm/migrations/*{.ts,.js}"],
-  "entities": ["./**/infra/entities/*{.ts,.js}"],
+  "migrations": ["./**/infra/typeorm/migrations/*.js"],
+  "entities": ["./**/infra/entities/*.js"],
   "cli": {
     "migrationsDir": "./**/infra/typeorm/migrations"
   },
