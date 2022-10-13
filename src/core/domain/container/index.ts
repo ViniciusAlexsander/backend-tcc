@@ -1,15 +1,42 @@
-import { container } from "tsyringe";
-import { UsuariosRepository } from "../../../infra/repositories/UsuariosRepository";
-import { UsuarioTokensRepository } from "../../../infra/repositories/UsuarioTokensRepository";
-import { IUsuariosRepository } from "../../repositories/IUsuariosRepository";
-import { IUsuarioTokensRepository } from "../../repositories/IUsuarioTokensRepository";
+import { container } from 'tsyringe';
 
-container.registerSingleton<IUsuariosRepository>(
-  "UsuariosRepository",
-  UsuariosRepository
+import { IGroupRepository } from '../../repositories/IGroupRepository';
+import { IGroupsUsersRepository } from '../../repositories/IGroupsUsersRepository';
+import { ISessionRepository } from '../../repositories/ISessionRepository';
+import { IUserRepository } from '../../repositories/IUserRepository';
+import { IUsersMoviesRepository } from '../../repositories/IUsersMoviesRepository';
+
+import { GroupRepository } from '../../../infra/repositories/GroupRepository';
+import { GroupsUsersRepository } from '../../../infra/repositories/GroupsUsersRepository';
+import { SessionRepository } from '../../../infra/repositories/SessionRepository';
+import { UserRepository } from '../../../infra/repositories/UserRepository';
+import { TokensUsersRepository } from '../../../infra/repositories/TokensUsersRepository';
+import { ITokensUserRepository } from '../../repositories/ITokensUsersRepository';
+import { UsersMoviesRepository } from '../../../infra/repositories/UsersMoviesRepository';
+
+container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
+
+container.registerSingleton<ITokensUserRepository>(
+  'TokensUsersRepository',
+  TokensUsersRepository,
 );
 
-container.registerSingleton<IUsuarioTokensRepository>(
-  "UsuarioTokensRepository",
-  UsuarioTokensRepository
+container.registerSingleton<IGroupRepository>(
+  'GroupRepository',
+  GroupRepository,
+);
+
+container.registerSingleton<IGroupsUsersRepository>(
+  'GroupsUsersRepository',
+  GroupsUsersRepository,
+);
+
+container.registerSingleton<ISessionRepository>(
+  'SessionRepository',
+  SessionRepository,
+);
+
+container.registerSingleton<IUsersMoviesRepository>(
+  'UsersMoviesRepository',
+  UsersMoviesRepository,
 );

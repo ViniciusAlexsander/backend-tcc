@@ -7,4 +7,4 @@ Inicializar
 
 Migrations
 
-- Criar migration: yarn typeorm migration:create -n tipo_perfil
+- Criar migration: yarn/npx typeorm migration:create -n tipo_perfil
