@@ -78,7 +78,7 @@ $ npm run dev
 # Caso queira outra porta, configure uma váriavel de ambiente no .env com o nome PORT
 ```
 
-Feito com 💜 por [Nayla Gomes](https://www.linkedin.com/in/naygo/) 👩‍💻 e [Vinicius Marinho](https://www.linkedin.com/in/vinicius-alexsander-lima-marinho/).
+Feito com 💜 por [Nayla Gomes 👩‍💻](https://www.linkedin.com/in/naygo/) e [Vinicius Marinho 👨‍💻](https://www.linkedin.com/in/vinicius-alexsander-lima-marinho/).
 
 [nodejs]: https://nodejs.org/
 [typescript]: https://www.typescriptlang.org/
