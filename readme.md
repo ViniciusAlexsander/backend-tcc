@@ -4,7 +4,22 @@
 
 ## 🎬 Sobre o projeto
 
- O CINEFAN é um site que apresenta um repositório de informações de filmes. Você pode registrar seus filmes favoritos, filmes que já assistiu e descobrir inúmeros outros através do filtro presente no site. 
+CINEFAN é um site que apresenta um repositório de informações de filmes. Você pode registrar seus filmes favoritos, filmes que já assistiu e descobrir inúmeros outros através do filtro presente no site.
+
+Os usuários terão acesso a aplicação mobile, onde poderão:
+
+- Usuário sem cadastro:
+  - Ver os filmes mais populares, filmes que estão no cinema e os próximos lançamentos
+  - Ver os detalhes dos filmes, como gênero, duração, sinopse, elenco e onde ele está disponível
+  - Pesquisar por filmes utilizando a busca avançada
+  - Sortear um filme para ser assistido
+  - Se cadastrar na plataforma
+- Usuário cadastrado, além das funcionalidades para os usuários sem cadastro, também é possível:
+  - Salvar filmes como favoritos
+  - Salvar filmes para serem assistidos
+  - Salvar filmes já assistidos
+  - Criar e participar de grupos
+    - E ao entrar em um grupo você pode criar ou participar de sessões
 
 
 ## 💻 Tecnologias
