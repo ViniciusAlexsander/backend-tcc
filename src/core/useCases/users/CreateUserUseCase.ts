@@ -20,7 +20,7 @@ class CreateUserUseCase {
     const emailAlreadyRegistred = await this.userRepository.index({ email });
 
     if (emailAlreadyRegistred.length > 0) {
-      throw new AppError('Email already registred');
+      throw new AppError('Já existe uma conta com este email');
     }
 
     const userNameAlreadyRegistred = await this.userRepository.index({
@@ -28,7 +28,7 @@ class CreateUserUseCase {
     });
 
     if (userNameAlreadyRegistred.length > 0) {
-      throw new AppError('User name already registred');
+      throw new AppError('Já existe uma conta com este username');
     }
 
     const passwordHash = await hash(password, 8);

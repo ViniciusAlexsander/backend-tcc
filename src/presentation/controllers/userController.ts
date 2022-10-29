@@ -4,9 +4,9 @@ import { FindUsersUseCase } from '../../core/useCases/users/FindUsersUseCase';
 import { Router, Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { CreateUserUseCase } from '../../core/useCases/users/CreateUserUseCase';
-import { FindUserUseCase } from 'core/useCases/users/FindUserUseCase';
-import { IFindUserInput } from 'core/ports/users/IFindUserInput';
-import { checkAuthentication } from 'presentation/middlewares/checkAuthentication';
+import { FindUserUseCase } from '../../core/useCases/users/FindUserUseCase';
+import { IFindUserInput } from '../../core/ports/users/IFindUserInput';
+import { checkAuthentication } from '../../presentation/middlewares/checkAuthentication';
 const userRoutes = Router();
 
 userRoutes.post('/', async (req: Request, res: Response): Promise<Response> => {

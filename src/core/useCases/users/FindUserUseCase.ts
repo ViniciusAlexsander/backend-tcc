@@ -1,6 +1,6 @@
-import { IFindUserOutput } from 'core/ports/users/IFindUserOutput';
-import { IFindUserInput } from 'core/ports/users/IFindUserInput';
-import { IUserRepository } from 'core/repositories/IUserRepository';
+import { IFindUserOutput } from '../../../core/ports/users/IFindUserOutput';
+import { IFindUserInput } from '../../../core/ports/users/IFindUserInput';
+import { IUserRepository } from '../../../core/repositories/IUserRepository';
 import { inject, injectable } from 'tsyringe';
 
 @injectable()
