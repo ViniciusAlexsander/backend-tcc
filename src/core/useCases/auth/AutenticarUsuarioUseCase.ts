@@ -41,13 +41,13 @@ class AuthenticateUserUseCase {
     } = auth;
 
     if (!usuario) {
-      throw new AppError('Email ou senha invalida');
+      throw new AppError('E-mail ou senha inválida!');
     }
 
     const senhaCorreta = await compare(password, usuario.password);
 
     if (!senhaCorreta) {
-      throw new AppError('Email ou senha invalida');
+      throw new AppError('E-mail ou senha inválida!');
     }
 
     const token = sign({}, secretToken, {
