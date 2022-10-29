@@ -21,10 +21,11 @@ Os usuários terão acesso a aplicação mobile, onde poderão:
   - Criar e participar de grupos
     - E ao entrar em um grupo você pode criar ou participar de sessões
 
+Este repositório é o back-end do projeto, acesse, também, o [front-end](https://github.com/ViniciusAlexsander/frontend-tcc/).
 
 ## 💻 Tecnologias
 
-As seguintes ferramentas foram usadas na construção do backend do projeto:
+As seguintes ferramentas foram usadas na construção do back-end do projeto:
 
 - [Node.js][nodejs]
 - [TypeScript][typescript]
@@ -69,7 +70,7 @@ Para conseguir executar o projeto você precisa ter instalado em sua máquina as
 - Npm: para instalar as depedências (este já vem instalando Node.js)
 - Docker ou o banco de dados de sua preferência
 
-#### 🎲 Rodando o Back End (servidor)
+#### 🎲 Rodando o back-end (servidor)
 
 ```bash
 # (1) Clone o repositório
