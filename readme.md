@@ -21,7 +21,7 @@ Os usuários terão acesso a aplicação mobile, onde poderão:
   - Criar e participar de grupos
     - E ao entrar em um grupo você pode criar ou participar de sessões
 
-Este repositório é o back-end do projeto, acesse, também, o [front-end]([https://github.com/ViniciusAlexsander/backend-tcc/](https://github.com/ViniciusAlexsander/frontend-tcc/).
+Este repositório é o back-end do projeto, acesse, também, o [front-end](https://github.com/ViniciusAlexsander/frontend-tcc/).
 
 ## 💻 Tecnologias
 
