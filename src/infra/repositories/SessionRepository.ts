@@ -2,11 +2,9 @@ import { ICreateSessionDto } from '../../core/domain/dtos/sessions/ICreateSessio
 import { ISessionRepository } from '../../core/repositories/ISessionRepository';
 import { Session } from '../entities/Session';
 import { getRepository, Repository } from 'typeorm';
-import { IJoinSessionDto } from 'core/domain/dtos/session_users/IJoinSessionDto';
 import { SessionUsers } from '../../infra/entities/SessionUsers';
-import { IFindUserSessionsDto } from 'core/domain/dtos/sessions/IFindUserSessionsDto';
-import { IDeleteSessionDto } from 'core/domain/dtos/sessions/IDeleteSessionDto';
-import { ILeaveSessionDto } from 'core/domain/dtos/session_users/ILeaveSessionDto';
+import { IFindUserSessionsDto } from '../../core/domain/dtos/sessions/IFindUserSessionsDto';
+import { IDeleteSessionDto } from '../../core/domain/dtos/sessions/IDeleteSessionDto';
 
 export class SessionRepository implements ISessionRepository {
   private repository: Repository<Session>;

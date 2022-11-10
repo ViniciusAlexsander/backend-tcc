@@ -1,8 +1,8 @@
-import { JoinSessionUseCase } from 'core/useCases/session_users/JoinSessionUseCase';
-import { LeaveSessionUseCase } from 'core/useCases/session_users/LeaveSessionUseCase';
 import { Router } from 'express';
-import { checkAuthentication } from 'presentation/middlewares/checkAuthentication';
 import { container } from 'tsyringe';
+import { JoinSessionUseCase } from '../../core/useCases/session_users/JoinSessionUseCase';
+import { LeaveSessionUseCase } from '../../core/useCases/session_users/LeaveSessionUseCase';
+import { checkAuthentication } from '../../presentation/middlewares/checkAuthentication';
 
 const sessionUsersRoutes = Router();
 

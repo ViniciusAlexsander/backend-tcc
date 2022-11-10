@@ -1,5 +1,5 @@
-import { IGroupRepository } from '../../repositories/IGroupRepository';
 import { inject, injectable } from 'tsyringe';
+import { IGroupRepository } from '../../repositories/IGroupRepository';
 import { IDeleteGroupInput } from '../../../core/ports/groups/IDeleteGroupInput';
 
 @injectable()

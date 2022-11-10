@@ -1,8 +1,8 @@
 import { ISessionRepository } from '../../../core/repositories/ISessionRepository';
 import { inject, injectable } from 'tsyringe';
 import { AppError } from '../../shared/errors/AppError';
-import { ISessionUsersRepository } from 'core/repositories/ISessionUsersRepository';
-import { IJoinSessionInput } from 'core/ports/session_users/IJoinSessionInput';
+import { ISessionUsersRepository } from '../../../core/repositories/ISessionUsersRepository';
+import { IJoinSessionInput } from '../../../core/ports/session_users/IJoinSessionInput';
 
 @injectable()
 export class JoinSessionUseCase {

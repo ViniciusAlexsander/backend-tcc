@@ -2,7 +2,7 @@ import { ISessionRepository } from '../../repositories/ISessionRepository';
 import { inject, injectable } from 'tsyringe';
 import { AppError } from '../../shared/errors/AppError';
 import { ISessionUsersRepository } from '../../../core/repositories/ISessionUsersRepository';
-import { ILeaveSessionInput } from 'core/ports/session_users/ILeaveSessionInput';
+import { ILeaveSessionInput } from '../../../core/ports/session_users/ILeaveSessionInput';
 
 @injectable()
 export class LeaveSessionUseCase {
