@@ -5,6 +5,7 @@ import { getRepository, Repository } from 'typeorm';
 import { IJoinSessionDto } from 'core/domain/dtos/sessions/IJoinSessionDto';
 import { SessionUsers } from '../../infra/entities/SessionUsers';
 import { IFindUserSessionsDto } from 'core/domain/dtos/sessions/IFindUserSessionsDto';
+import { IDeleteSessionDto } from 'core/domain/dtos/sessions/IDeleteSessionDto';
 
 export class SessionRepository implements ISessionRepository {
   private repository: Repository<Session>;
@@ -29,6 +30,10 @@ export class SessionRepository implements ISessionRepository {
     });
 
     await this.repository.save(session);
+  }
+
+  async delete({id}: IDeleteSessionDto): Promise<void> {
+    await this.repository.delete(id);
   }
 
   async index({

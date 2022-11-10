@@ -1,4 +1,5 @@
 import { ICreateSessionDto } from 'core/domain/dtos/sessions/ICreateSessionDto';
+import { IDeleteSessionDto } from 'core/domain/dtos/sessions/IDeleteSessionDto';
 import { IFindSessionsDto } from 'core/domain/dtos/sessions/IFindSessionsDto';
 import { IFindUserSessionsDto } from 'core/domain/dtos/sessions/IFindUserSessionsDto';
 import { IJoinSessionDto } from 'core/domain/dtos/sessions/IJoinSessionDto';
@@ -11,6 +12,8 @@ export interface ISessionRepository {
     movie_id,
     assisted_in_id,
   }: ICreateSessionDto): Promise<void>;
+
+  delete({id}: IDeleteSessionDto): Promise<void>;
 
   index({
     group_id,

@@ -3,6 +3,7 @@ import { IFindGroupsDto } from '../../core/domain/dtos/groups/IFindGroupsDto';
 import { IGroupRepository } from '../../core/repositories/IGroupRepository';
 import { Group } from '../entities/Group';
 import { getRepository, Raw, Repository } from 'typeorm';
+import { IDeleteGroupDto } from 'core/domain/dtos/groups/IDeleteGroupDto';
 
 class GroupRepository implements IGroupRepository {
   private repository: Repository<Group>;
@@ -38,7 +39,7 @@ class GroupRepository implements IGroupRepository {
     return group;
   }
 
-  async deleteGroup(id: string): Promise<void> {
+  async deleteGroup({id}: IDeleteGroupDto): Promise<void> {
     await this.repository.delete(id);
   }
 }
