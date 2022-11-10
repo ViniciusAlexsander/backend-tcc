@@ -13,6 +13,8 @@ import { UserRepository } from '../../../infra/repositories/UserRepository';
 import { TokensUsersRepository } from '../../../infra/repositories/TokensUsersRepository';
 import { ITokensUserRepository } from '../../repositories/ITokensUsersRepository';
 import { UsersMoviesRepository } from '../../../infra/repositories/UsersMoviesRepository';
+import { ISessionUsersRepository } from 'core/repositories/ISessionUsersRepository';
+import { SessionUsersRepository } from 'infra/repositories/SessionUsersRepository';
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 
@@ -34,6 +36,11 @@ container.registerSingleton<IGroupsUsersRepository>(
 container.registerSingleton<ISessionRepository>(
   'SessionRepository',
   SessionRepository,
+);
+
+container.registerSingleton<ISessionUsersRepository>(
+  'SessionUsersRepository',
+  SessionUsersRepository,
 );
 
 container.registerSingleton<IUsersMoviesRepository>(
