@@ -5,6 +5,7 @@ import { FindGroupsUseCase } from '../../core/useCases/groups/FindGroupsUseCase'
 import { Router } from 'express';
 import { checkAuthentication } from '../middlewares/checkAuthentication';
 import { container } from 'tsyringe';
+import { DeleteGroupUseCase } from 'core/useCases/groups/DeleteGroupUseCase';
 
 const groupRoutes = Router();
 
@@ -34,6 +35,15 @@ groupRoutes.get('/', checkAuthentication, async (req, res) => {
   });
 
   return res.status(200).json(group);
+});
+
+groupRoutes.delete('/:id', checkAuthentication, async (req, res) => {
+  const deleteGroupUseCase = container.resolve(DeleteGroupUseCase);
+
+  const { id } = req.params;
+  await deleteGroupUseCase.execute({ id });
+
+  return res.status(200).json({ message: 'Group deleted' });
 });
 
 export { groupRoutes };

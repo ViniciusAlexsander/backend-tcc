@@ -23,6 +23,10 @@ class GroupRepository implements IGroupRepository {
     });
   }
 
+  async findOne(id: string): Promise<Group> {
+    return await this.repository.findOne(id);
+  }
+
   async createGroup({ title, description }: ICreateGroupDto): Promise<any> {
     const group = this.repository.create({
       title,
@@ -32,6 +36,10 @@ class GroupRepository implements IGroupRepository {
     await this.repository.save(group);
 
     return group;
+  }
+
+  async deleteGroup(id: string): Promise<void> {
+    await this.repository.delete(id);
   }
 }
 

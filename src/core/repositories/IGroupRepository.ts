@@ -4,5 +4,7 @@ import { Group } from 'infra/entities/Group';
 
 export interface IGroupRepository {
   index({ id, title }: IFindGroupsDto): Promise<Group[]>;
+  findOne(id: string): Promise<Group>;
   createGroup({ title, description }: ICreateGroupDto): Promise<any>;
+  deleteGroup(id: string): Promise<void>;
 }
