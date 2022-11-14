@@ -2,9 +2,9 @@ import { ICreateSessionDto } from '../../core/domain/dtos/sessions/ICreateSessio
 import { ISessionRepository } from '../../core/repositories/ISessionRepository';
 import { Session } from '../entities/Session';
 import { getRepository, Repository } from 'typeorm';
-import { IJoinSessionDto } from 'core/domain/dtos/sessions/IJoinSessionDto';
 import { SessionUsers } from '../../infra/entities/SessionUsers';
-import { IFindUserSessionsDto } from 'core/domain/dtos/sessions/IFindUserSessionsDto';
+import { IFindUserSessionsDto } from '../../core/domain/dtos/sessions/IFindUserSessionsDto';
+import { IDeleteSessionDto } from '../../core/domain/dtos/sessions/IDeleteSessionDto';
 
 export class SessionRepository implements ISessionRepository {
   private repository: Repository<Session>;
@@ -31,6 +31,10 @@ export class SessionRepository implements ISessionRepository {
     await this.repository.save(session);
   }
 
+  async delete({ id }: IDeleteSessionDto): Promise<void> {
+    await this.repository.delete(id);
+  }
+
   async index({
     group_id = null,
     assisted_in_id = null,
@@ -52,16 +56,6 @@ export class SessionRepository implements ISessionRepository {
     const session = await this.repository.findOne({ id });
 
     return session;
-  }
-
-  async joinSession({ session_id, user_id }: IJoinSessionDto): Promise<void> {
-    const sessionUsers = this.sessionUsersRepository.create({
-      session_id,
-      user_id,
-      rating: 0,
-    });
-
-    await this.sessionUsersRepository.save(sessionUsers);
   }
 
   async findSessionUser({

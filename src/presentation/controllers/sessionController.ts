@@ -6,7 +6,7 @@ import { FindSessionsUseCase } from '../../core/useCases/sessions/FindSessionsUs
 import { Router } from 'express';
 import { container } from 'tsyringe';
 import { checkAuthentication } from '../middlewares/checkAuthentication';
-import { JoinSessionUseCase } from '../../core/useCases/sessions/JoinSessionUseCase';
+import { DeleteSessionUseCase } from '../../core/useCases/sessions/DeleteSessionUseCase';
 
 export const sessionRoutes = Router();
 
@@ -34,7 +34,7 @@ sessionRoutes.get('/', checkAuthentication, async (req, res) => {
 
   const findSessionsUseCase = container.resolve(FindSessionsUseCase);
   const result = await findSessionsUseCase.execute(data);
-  
+
   return res.status(200).json(result);
 });
 
@@ -47,13 +47,11 @@ sessionRoutes.get('/:id', checkAuthentication, async (req, res) => {
   return res.status(200).json(result);
 });
 
-sessionRoutes.post('/join', checkAuthentication, async (req, res) => {
-  const { sessionId } = req.body;
+sessionRoutes.delete('/:id', checkAuthentication, async (req, res) => {
+  const { id } = req.params;
 
-  const userId = req.usuario.id;
-
-  const createSessionUseCase = container.resolve(JoinSessionUseCase);
-  const result = await createSessionUseCase.execute({ userId, sessionId });
+  const createSessionUseCase = container.resolve(DeleteSessionUseCase);
+  const result = await createSessionUseCase.execute(id);
 
   return res.status(200).json(result);
 });

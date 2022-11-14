@@ -5,6 +5,7 @@ import { IGroupsUsersRepository } from '../../repositories/IGroupsUsersRepositor
 import { ISessionRepository } from '../../repositories/ISessionRepository';
 import { IUserRepository } from '../../repositories/IUserRepository';
 import { IUsersMoviesRepository } from '../../repositories/IUsersMoviesRepository';
+import { ISessionUsersRepository } from '../../repositories/ISessionUsersRepository';
 
 import { GroupRepository } from '../../../infra/repositories/GroupRepository';
 import { GroupsUsersRepository } from '../../../infra/repositories/GroupsUsersRepository';
@@ -13,6 +14,7 @@ import { UserRepository } from '../../../infra/repositories/UserRepository';
 import { TokensUsersRepository } from '../../../infra/repositories/TokensUsersRepository';
 import { ITokensUserRepository } from '../../repositories/ITokensUsersRepository';
 import { UsersMoviesRepository } from '../../../infra/repositories/UsersMoviesRepository';
+import { SessionUsersRepository } from '../../../infra/repositories/SessionUsersRepository';
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 
@@ -34,6 +36,11 @@ container.registerSingleton<IGroupsUsersRepository>(
 container.registerSingleton<ISessionRepository>(
   'SessionRepository',
   SessionRepository,
+);
+
+container.registerSingleton<ISessionUsersRepository>(
+  'SessionUsersRepository',
+  SessionUsersRepository,
 );
 
 container.registerSingleton<IUsersMoviesRepository>(

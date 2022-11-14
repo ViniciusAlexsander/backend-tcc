@@ -1,6 +1,6 @@
 import { compare } from 'bcrypt';
-import { IAuthenticateUserInput } from 'core/ports/auth/IAuthenticateUserInput';
-import { IUserRepository } from 'core/repositories/IUserRepository';
+import { IAuthenticateUserInput } from '../../../core/ports/auth/IAuthenticateUserInput';
+import { IUserRepository } from '../../../core/repositories/IUserRepository';
 import dayjs from 'dayjs';
 import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
@@ -41,13 +41,13 @@ class AuthenticateUserUseCase {
     } = auth;
 
     if (!usuario) {
-      throw new AppError('Email ou senha invalida');
+      throw new AppError('E-mail ou senha inválida!');
     }
 
     const senhaCorreta = await compare(password, usuario.password);
 
     if (!senhaCorreta) {
-      throw new AppError('Email ou senha invalida');
+      throw new AppError('E-mail ou senha inválida!');
     }
 
     const token = sign({}, secretToken, {
