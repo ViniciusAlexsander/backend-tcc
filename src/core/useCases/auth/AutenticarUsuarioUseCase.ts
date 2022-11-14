@@ -1,6 +1,6 @@
 import { compare } from 'bcrypt';
-import { IAuthenticateUserInput } from 'core/ports/auth/IAuthenticateUserInput';
-import { IUserRepository } from 'core/repositories/IUserRepository';
+import { IAuthenticateUserInput } from '../../../core/ports/auth/IAuthenticateUserInput';
+import { IUserRepository } from '../../../core/repositories/IUserRepository';
 import dayjs from 'dayjs';
 import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
