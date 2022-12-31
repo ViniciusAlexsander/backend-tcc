@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const tsyringe_1 = require("tsyringe");
+const GroupRepository_1 = require("../../../infra/repositories/GroupRepository");
+const GroupsUsersRepository_1 = require("../../../infra/repositories/GroupsUsersRepository");
+const SessionRepository_1 = require("../../../infra/repositories/SessionRepository");
+const UserRepository_1 = require("../../../infra/repositories/UserRepository");
+const TokensUsersRepository_1 = require("../../../infra/repositories/TokensUsersRepository");
+const UsersMoviesRepository_1 = require("../../../infra/repositories/UsersMoviesRepository");
+const SessionUsersRepository_1 = require("../../../infra/repositories/SessionUsersRepository");
+tsyringe_1.container.registerSingleton('UserRepository', UserRepository_1.UserRepository);
+tsyringe_1.container.registerSingleton('TokensUsersRepository', TokensUsersRepository_1.TokensUsersRepository);
+tsyringe_1.container.registerSingleton('GroupRepository', GroupRepository_1.GroupRepository);
+tsyringe_1.container.registerSingleton('GroupsUsersRepository', GroupsUsersRepository_1.GroupsUsersRepository);
+tsyringe_1.container.registerSingleton('SessionRepository', SessionRepository_1.SessionRepository);
+tsyringe_1.container.registerSingleton('SessionUsersRepository', SessionUsersRepository_1.SessionUsersRepository);
+tsyringe_1.container.registerSingleton('UsersMoviesRepository', UsersMoviesRepository_1.UsersMoviesRepository);

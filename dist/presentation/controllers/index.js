@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const authenticateController_1 = require("./authenticateController");
+const groupController_1 = require("./groupController");
+const groupsUsersController_1 = require("./groupsUsersController");
+const movieComments_1 = require("./movieComments");
+const sessionController_1 = require("./sessionController");
+const sessionUsersController_1 = require("./sessionUsersController");
+const userController_1 = require("./userController");
+const usersMoviesController_1 = require("./usersMoviesController");
+const router = (0, express_1.Router)();
+exports.router = router;
+router.use('/users', userController_1.userRoutes);
+router.use('/auth', authenticateController_1.authRoutes);
+router.use('/groups', groupController_1.groupRoutes);
+router.use('/groups-users', groupsUsersController_1.groupsUsersRoutes);
+router.use('/sessions', sessionController_1.sessionRoutes);
+router.use('/sessions-users', sessionUsersController_1.sessionUsersRoutes);
+router.use('/users-movies', usersMoviesController_1.usersMoviesRoutes);
+router.use('/movies-comments', movieComments_1.movieCommentsRoutes);
+router.get('/', (req, res) => {
+    res.json({ message: 'Hello World' });
+});

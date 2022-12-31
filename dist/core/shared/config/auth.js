@@ -1,0 +1,9 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
+    secretToken: 'ecbfc0242ef3e3e820ce5be4da68ade3f82dbcf2',
+    expiresInToken: '1d',
+    secretRefreshToken: '8d9531f4f366a978c081accfa3c061056f84841f',
+    expiresInRefreshToken: '30d',
+    expiresRefreshTokenDays: 30,
+};
