@@ -1,10 +1,10 @@
 {
   "type": "postgres",
   "port": 5432,
-  "host": "ec2-54-82-205-3.compute-1.amazonaws.com",
-  "username": "ytrjhtrukplxqp",
-  "password": "a517ebb7d87c76d270c9aefaa8382ae27a3f986ba95a53aeb171b53740ca0e9f",
-  "database": "d4tcjte2hrou0j",
+  "host": "dpg-ceo7gd82i3molplm5m4g-a.oregon-postgres.render.com",
+  "username": "cinefan",
+  "password": "ZKOD92HVJZt1M1qMEC7wFrp6G82MD86v",
+  "database": "cinefan",
   "migrations": ["./**/infra/typeorm/migrations/*.js"],
   "entities": ["./**/infra/entities/*.js"],
   "cli": {
